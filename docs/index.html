@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スナログ プロジェクトドキュメント</title>
+<style>
+  :root { --bg: #f5f2eb; --text: #1a1730; --gold: #c9aa6e; --gold-dark: #7a5508; --dark: #131220; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Hiragino Kaku Gothic ProN', sans-serif; min-height: 100vh; }
+  header { background: var(--dark); padding: 2rem; text-align: center; }
+  header h1 { color: var(--gold); font-size: 2rem; letter-spacing: 0.1em; }
+  header p { color: #888; margin-top: 0.5rem; font-size: 0.9rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 3rem 2rem; max-width: 900px; margin: 0 auto; }
+  .card { background: white; border: 1px solid #e0d9cc; border-radius: 12px; padding: 2rem; text-decoration: none; color: var(--text); transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .card .icon { font-size: 2rem; margin-bottom: 1rem; }
+  .card h2 { font-size: 1.1rem; color: var(--gold-dark); margin-bottom: 0.5rem; }
+  .card p { font-size: 0.85rem; color: #666; line-height: 1.6; }
+  footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>スナログ</h1>
+  <p>snacklog — プロジェクトドキュメント</p>
+</header>
+<div class="cards">
+  <a class="card" href="spec.html">
+    <div class="icon">📋</div>
+    <h2>サービス仕様書</h2>
+    <p>スナログのサービス設計・機能仕様・マネタイズプランをまとめた仕様書</p>
+  </a>
+  <a class="card" href="issues.html">
+    <div class="icon">🗂</div>
+    <h2>論点トラッカー</h2>
+    <p>A〜G カテゴリーの検討論点・解決状況を管理するトラッカー</p>
+  </a>
+  <a class="card" href="competitive.html">
+    <div class="icon">📊</div>
+    <h2>競合分析</h2>
+    <p>スナック検索サービス9社の競合分析レポート</p>
+  </a>
+</div>
+<footer>最終更新: 2026-04-10 | snaklog project</footer>
+</body>
+</html>
