@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スナログ 論点トラッカー</title>
+<style>
+  :root { --bg: #f5f2eb; --text: #1a1730; --gold: #c9aa6e; --gold-dark: #7a5508; --dark: #131220; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Hiragino Kaku Gothic ProN', sans-serif; }
+  header { background: var(--dark); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1rem; }
+  header h1 { color: var(--gold); font-size: 1.4rem; }
+  header .back { color: #888; text-decoration: none; font-size: 0.85rem; }
+  header .back:hover { color: var(--gold); }
+  .version { color: #888; font-size: 0.8rem; margin-left: auto; }
+  main { max-width: 960px; margin: 0 auto; padding: 2rem; }
+  .cat { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #e0d9cc; }
+  .cat-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gold); }
+  .cat-label { background: var(--dark); color: var(--gold); padding: 2px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+  .cat-title { color: var(--gold-dark); font-size: 1rem; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: #f5f2eb; color: #666; padding: 8px 12px; text-align: left; font-weight: normal; border-bottom: 1px solid #e0d9cc; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f0ebe0; vertical-align: top; line-height: 1.6; }
+  tr:hover td { background: #faf8f3; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; white-space: nowrap; }
+  .solved { background: #e8f5e9; color: #2e7d32; }
+  .open { background: #fff3e0; color: #e65100; }
+  .future { background: #e3f2fd; color: #1565c0; }
+  footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="index.html">← 一覧へ</a>
+  <h1>🗂 論点トラッカー</h1>
+  <span class="version">v0.1 | 2026-04-10</span>
+</header>
+<main>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">A</span><span class="cat-title">サービス定義・コンセプト</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
+      <tr><td>A-1</td><td>予約機能を持つべきか</td><td>ウォークイン文化に合わせ「来店きっかけサイト」に特化。団体予約のみ対応</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>A-2</td><td>初期ターゲットエリア</td><td>赤坂から開始→全国展開</td><td><span class="badge solved">解決済み</span></td></tr>
+    </table>
+  </div>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">B</span><span class="cat-title">競合・差別化</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
+      <tr><td>B-1</td><td>HPB型依存構造との差別化</td><td>低掲載コスト・顧客情報店舗直保有・SNS自立集客をPremiumの訴求軸に</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>B-2</td><td>既存スナック検索サービスとの差別化</td><td>競合9社分析済み。来店きっかけ特化・チェックイン機能が差別化軸</td><td><span class="badge solved">解決済み</span></td></tr>
+    </table>
+  </div>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">C</span><span class="cat-title">機能仕様</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
+      <tr><td>C-1</td><td>店舗CTA設計</td><td>電話（常時）・SNS問合せ（登録時のみ）・予約（団体のみ）の3要素</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>C-2</td><td>SNSリンクのテーブル設計</td><td>shop_sns_linksテーブル（LINE/Instagram/X/Facebook/TikTok/website対応）</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>C-3</td><td>GPS検索・リアルタイムランキング</td><td>TOP画面に実装。チェックイン数ベースの「盛り上がってる店」表示</td><td><span class="badge solved">解決済み</span></td></tr>
+    </table>
+  </div>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">D</span><span class="cat-title">ユーザー機能</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
+      <tr><td>D-1</td><td>ユーザー会員機能の要否</td><td>無料・有料（¥1,000/月）の2段階で実装。チェックイン・フレンド機能付き</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>D-2</td><td>フレンド機能の設計</td><td>相互承認型。チェックイン時に友人通知</td><td><span class="badge solved">解決済み</span></td></tr>
+    </table>
+  </div>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">E</span><span class="cat-title">データ・法律</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
+      <tr><td>E-1</td><td>店舗データ収集手段</td><td>Zenrinデータ活用（Jさん担当）</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>E-2</td><td>法的論点</td><td>原田さんへ相談中</td><td><span class="badge open">検討中</span></td></tr>
+    </table>
+  </div>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">F</span><span class="cat-title">サービス名・ブランド</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
+      <tr><td>F-1</td><td>サービス名</td><td>スナログ / snacklog に決定</td><td><span class="badge solved">解決済み</span></td></tr>
+      <tr><td>F-2</td><td>ロゴ・カラーパレット</td><td>マイクシンボル+明朝体ロゴ確定。カラー6色確定</td><td><span class="badge solved">解決済み</span></td></tr>
+    </table>
+  </div>
+
+  <div class="cat">
+    <div class="cat-header"><span class="cat-label">G</span><span class="cat-title">将来論点</span></div>
+    <table>
+      <tr><th>ID</th><th>論点</th><th>メモ</th><th>状態</th></tr>
+      <tr><td>G-1</td><td>インバウンド需要対応</td><td>競合ではスナック横丁のみ多言語対応（英・中・西）。差別化として有望</td><td><span class="badge future">将来検討</span></td></tr>
+      <tr><td>G-2</td><td>料金プラン価格帯確定</td><td>Basic/Standard/Premium の価格TBD</td><td><span class="badge open">検討中</span></td></tr>
+      <tr><td>G-3</td><td>業種拡張</td><td>美容室・エステ等への展開可能性</td><td><span class="badge future">将来検討</span></td></tr>
+    </table>
+  </div>
+
+</main>
+<footer>スナログ プロジェクトドキュメント | 最終更新: 2026-04-10</footer>
+</body>
+</html>
