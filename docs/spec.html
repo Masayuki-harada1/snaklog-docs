@@ -5,39 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>スナログ 仕様書 v0.2</title>
 <style>
-  :root { --bg: #f5f2eb; --text: #1a1730; --gold: #c9aa6e; --gold-dark: #7a5508; --dark: #131220; --icon-bg: #2d2856; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Hiragino Kaku Gothic ProN', sans-serif; }
-  header { background: var(--dark); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1rem; }
-  header h1 { color: var(--gold); font-size: 1.4rem; }
-  header .back { color: #888; text-decoration: none; font-size: 0.85rem; }
-  header .back:hover { color: var(--gold); }
-  .version { color: #888; font-size: 0.8rem; margin-left: auto; }
-  nav { background: var(--dark); border-top: 1px solid #2a2740; padding: 0.5rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  nav a { color: #aaa; text-decoration: none; font-size: 0.85rem; padding: 0.3rem 0; }
-  nav a:hover { color: var(--gold); }
-  main { max-width: 900px; margin: 0 auto; padding: 2rem; }
-  .section { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #e0d9cc; }
-  .section h2 { color: var(--gold-dark); font-size: 1.1rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gold); }
-  .section h3 { font-size: 0.95rem; color: var(--text); margin: 1rem 0 0.5rem; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
-  th { background: var(--dark); color: var(--gold); padding: 8px 12px; text-align: left; }
-  td { padding: 8px 12px; border-bottom: 1px solid #f0ebe0; }
-  tr:hover td { background: #faf8f3; }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
-  .badge.done { background: #e8f5e9; color: #2e7d32; }
-  .badge.wip { background: #fff3e0; color: #e65100; }
-  .badge.todo { background: #f5f5f5; color: #666; }
-  p { font-size: 0.9rem; line-height: 1.7; color: #444; }
-  ul { padding-left: 1.5rem; font-size: 0.9rem; line-height: 1.8; color: #444; }
-  footer { text-align: center; padding: 2rem; color: #aaa; font-size: 0.8rem; }
+  :root{--bg:#f5f2eb;--text:#1a1730;--gold:#c9aa6e;--gold-dark:#7a5508;--dark:#131220;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN',sans-serif;}
+  header{background:var(--dark);padding:1.25rem 2rem;display:flex;align-items:center;gap:1rem;}
+  .logo-wrap{display:flex;align-items:center;gap:12px;}
+  nav{background:var(--dark);border-top:1px solid #2a2740;padding:0.5rem 2rem;display:flex;gap:1.5rem;flex-wrap:wrap;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.85rem;padding:0.3rem 0;}
+  nav a:hover{color:var(--gold);}
+  main{max-width:900px;margin:0 auto;padding:2rem;}
+  .section{background:white;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;border:1px solid #e0d9cc;}
+  .section h2{color:var(--gold-dark);font-size:1.05rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);}
+  .section h3{font-size:0.9rem;color:var(--text);margin:1rem 0 0.5rem;}
+  table{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:0.5rem;}
+  th{background:var(--dark);color:var(--gold);padding:8px 12px;text-align:left;}
+  td{padding:8px 12px;border-bottom:1px solid #f0ebe0;}
+  tr:hover td{background:#faf8f3;}
+  .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75rem;}
+  .wip{background:#fff3e0;color:#e65100;}
+  p{font-size:0.88rem;line-height:1.7;color:#444;}
+  ul{padding-left:1.5rem;font-size:0.88rem;line-height:1.8;color:#444;}
+  footer{text-align:center;padding:2rem;color:#aaa;font-size:0.8rem;}
 </style>
 </head>
 <body>
 <header>
-  <a class="back" href="index.html">← 一覧へ</a>
-  <h1>📋 サービス仕様書</h1>
-  <span class="version">v0.2 | 2026-04-10</span>
+  <a href="index.html" style="color:#888;text-decoration:none;font-size:0.8rem;white-space:nowrap;">← 一覧へ</a>
+  <div class="logo-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44" style="flex-shrink:0">
+  <rect width="44" height="44" rx="10" fill="#1a1730"/>
+  <rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/>
+  <path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/>
+  <rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/>
+</svg>
+    <div>
+      <div style="color:#c9aa6e;font-size:1.2rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div>
+      <div style="color:#888;font-size:0.7rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:2px;">snacklog</div>
+    </div>
+  </div>
+  <span style="color:#555;font-size:0.8rem;margin-left:auto;">仕様書 v0.2</span>
 </header>
 <nav>
   <a href="#concept">コンセプト</a>
@@ -47,7 +53,6 @@
   <a href="#data">データ</a>
 </nav>
 <main>
-
   <div class="section" id="concept">
     <h2>サービスコンセプト</h2>
     <p><strong>スナログ（snacklog）</strong>は、スナックバーの検索・発見サービスです。</p>
@@ -61,7 +66,6 @@
     <h3>初期ターゲットエリア</h3>
     <p>赤坂エリアから開始 → 全国展開</p>
   </div>
-
   <div class="section" id="features">
     <h2>主要機能</h2>
     <h3>TOP画面</h3>
@@ -85,7 +89,6 @@
       <li>訪問履歴・行きつけ店舗の管理</li>
     </ul>
   </div>
-
   <div class="section" id="monetize">
     <h2>マネタイズプラン</h2>
     <table>
@@ -96,18 +99,13 @@
     </table>
     <p style="margin-top:0.75rem">Premiumの訴求軸：HPB依存からの脱却（低コスト・顧客情報の自己保有・自立集客）</p>
   </div>
-
   <div class="section" id="tech">
     <h2>技術スタック（検討中）</h2>
-    <p>担当：りょうちゃん（技術スタック）</p>
+    <p>担当：りょうちゃん</p>
     <ul style="margin-top:0.5rem">
-      <li>フロントエンド：TBD</li>
-      <li>バックエンド：TBD</li>
-      <li>データベース：TBD</li>
-      <li>地図API：Google Maps Platform</li>
+      <li>フロントエンド：TBD</li><li>バックエンド：TBD</li><li>データベース：TBD</li><li>地図API：Google Maps Platform</li>
     </ul>
   </div>
-
   <div class="section" id="data">
     <h2>店舗データ</h2>
     <p>担当：Jさん（Zenrin等活用）</p>
@@ -117,7 +115,6 @@
       <li>対応SNS：LINE・Instagram・X・Facebook・TikTok・website</li>
     </ul>
   </div>
-
 </main>
 <footer>スナログ プロジェクトドキュメント | 最終更新: 2026-04-10</footer>
 </body>
