@@ -1,108 +1,358 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>スナログ 論点トラッカー</title>
-<style>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>スナログ 検討論点リスト v0.1</title><style>
   :root{--bg:#f5f2eb;--text:#1a1730;--gold:#c9aa6e;--gold-dark:#7a5508;--dark:#131220;}
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN',sans-serif;}
-  header{background:var(--dark);padding:1.25rem 2rem;display:flex;align-items:center;gap:1rem;}
-  .logo-wrap{display:flex;align-items:center;gap:12px;}
-  main{max-width:960px;margin:0 auto;padding:2rem;}
-  .cat{background:white;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;border:1px solid #e0d9cc;}
-  .cat-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);}
-  .cat-label{background:var(--dark);color:var(--gold);padding:2px 10px;border-radius:4px;font-size:0.8rem;font-weight:bold;}
-  .cat-title{color:var(--gold-dark);font-size:1rem;font-weight:bold;}
-  table{width:100%;border-collapse:collapse;font-size:0.84rem;}
-  th{background:#f5f2eb;color:#666;padding:8px 12px;text-align:left;font-weight:normal;border-bottom:1px solid #e0d9cc;}
-  td{padding:10px 12px;border-bottom:1px solid #f0ebe0;vertical-align:top;line-height:1.6;}
-  tr:hover td{background:#faf8f3;}
-  .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75rem;white-space:nowrap;}
-  .solved{background:#e8f5e9;color:#2e7d32;}
-  .open{background:#fff3e0;color:#e65100;}
+  body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;font-size:14px;line-height:1.7;}
+  header{background:var(--dark);padding:1rem 1.5rem;display:flex;align-items:center;gap:0;}
+  nav{background:var(--dark);border-top:1px solid #2a2740;padding:0.4rem 1.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.8rem;}nav a:hover{color:var(--gold);}
+  main{max-width:960px;margin:0 auto;padding:1.5rem;}
+  .summary-card{background:white;border-radius:10px;padding:1rem 1.5rem;margin-bottom:1.25rem;border:1px solid #e0d9cc;display:flex;gap:1rem;flex-wrap:wrap;}
+  .summary-item{text-align:center;padding:0.5rem 1rem;border-radius:8px;min-width:80px;}
+  .s-done{background:#e8f5e9;color:#2e7d32;}
+  .s-wip{background:#fff3e0;color:#e65100;}
+  .s-todo{background:#f5f5f5;color:#777;}
+  .cat{background:white;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;border:1px solid #e0d9cc;}
+  .cat-head{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.4rem;border-bottom:2px solid var(--gold);}
+  .cat-label{background:var(--dark);color:var(--gold);padding:2px 10px;border-radius:4px;font-size:0.78rem;font-weight:bold;}
+  .cat-title{color:var(--gold-dark);font-size:0.95rem;font-weight:bold;}
+  .priority-tag{font-size:0.72rem;margin-left:auto;}
+  .issue{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f0ebe0;}
+  .issue:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .issue-head{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;}
+  .issue-id{font-family:monospace;font-size:0.78rem;color:#999;background:#f5f5f5;padding:1px 6px;border-radius:3px;}
+  .issue-title{font-weight:600;font-size:0.9rem;}
+  .badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:0.72rem;}
+  .done{background:#e8f5e9;color:#2e7d32;}
+  .wip{background:#fff3e0;color:#e65100;}
+  .todo{background:#f5f5f5;color:#777;}
   .future{background:#e3f2fd;color:#1565c0;}
-  footer{text-align:center;padding:2rem;color:#aaa;font-size:0.8rem;}
-</style>
-</head>
+  p{margin:0.3rem 0;color:#444;font-size:0.87rem;}
+  ul{padding-left:1.4rem;color:#444;font-size:0.87rem;}
+  ul li{margin:0.15rem 0;}
+  .options{margin-top:0.5rem;background:#faf8f3;border-radius:6px;padding:0.6rem 0.8rem;}
+  .options p{font-weight:600;font-size:0.8rem;color:#7a5508;margin-bottom:0.2rem;}
+  .note{font-size:0.8rem;color:#888;margin-top:0.3rem;}
+  .decided{background:#f0fdf4;border-left:3px solid #4caf50;padding:0.5rem 0.8rem;border-radius:0 6px 6px 0;margin-top:0.4rem;}
+  .decided p{color:#2e7d32;}
+  footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
+</style></head>
 <body>
 <header>
-  <a href="index.html" style="color:#888;text-decoration:none;font-size:0.8rem;white-space:nowrap;">← 一覧へ</a>
-  <div class="logo-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44" style="flex-shrink:0">
-  <rect width="44" height="44" rx="10" fill="#1a1730"/>
-  <rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/>
-  <path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/>
-  <rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/>
-</svg>
-    <div>
-      <div style="color:#c9aa6e;font-size:1.2rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div>
-      <div style="color:#888;font-size:0.7rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:2px;">snacklog</div>
+  <a href="index.html" style="color:#888;text-decoration:none;font-size:0.8rem;white-space:nowrap;margin-right:12px;">← 一覧へ</a>
+  <div style="display:flex;align-items:center;gap:10px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" style="flex-shrink:0"><rect width="44" height="44" rx="10" fill="#1a1730"/><rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/><path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/><rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/></svg><div><div style="color:#c9aa6e;font-size:1.15rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div><div style="color:#888;font-size:0.68rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:2px;">snacklog</div></div></div>
+  <span style="color:#666;font-size:0.78rem;margin-left:auto;">検討論点リスト v0.1</span>
+</header>
+<nav>
+  <a href="#summary">サマリー</a>
+  <a href="#catA">A ビジネスモデル</a>
+  <a href="#catB">B CVポイント</a>
+  <a href="#catC">C 店舗詳細</a>
+  <a href="#catD">D 法務</a>
+  <a href="#catE">E 技術・開発</a>
+  <a href="#catF">F ブランド</a>
+  <a href="#catG">G 将来構想</a>
+</nav>
+<main>
+
+<div class="summary-card" id="summary">
+  <div class="summary-item s-done"><div style="font-size:1.4rem;font-weight:700;">5</div><div style="font-size:0.75rem;">✅ 確定</div></div>
+  <div class="summary-item s-wip"><div style="font-size:1.4rem;font-weight:700;">2</div><div style="font-size:0.75rem;">🔄 検討中</div></div>
+  <div class="summary-item s-todo"><div style="font-size:1.4rem;font-weight:700;">8</div><div style="font-size:0.75rem;">❓ 未決</div></div>
+  <div class="summary-item" style="background:#f5f2eb;"><div style="font-size:1.4rem;font-weight:700;">15</div><div style="font-size:0.75rem;">合計</div></div>
+</div>
+
+<div class="cat" id="catA">
+  <div class="cat-head">
+    <span class="cat-label">A</span>
+    <span class="cat-title">ビジネスモデル・収益設計</span>
+    <span class="priority-tag badge" style="background:#fde8e8;color:#c62828;">🔴 最優先</span>
+  </div>
+  <p style="font-size:0.82rem;color:#888;margin-bottom:1rem;">価格・プラン設計は全開発仕様に影響する。早期に確定させたい。</p>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">A-1</span>
+      <span class="issue-title">価格プランの確定</span>
+      <span class="badge wip">🔄 検討中</span>
+    </div>
+    <p>現時点では叩き台として「無料 / ¥9,800 / ¥29,800」を仮置き。競合比較・店舗ヒアリングをもとに調整が必要。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. 無料 / ¥9,800 / ¥29,800（現在の叩き台）</li>
+        <li>B. 無料 / ¥14,800 / ¥39,800（ホットペッパー水準）</li>
+        <li>C. 初期は全プラン無料で掲載数を先行確保、後に有料切替</li>
+      </ul>
     </div>
   </div>
-  <span style="color:#555;font-size:0.8rem;margin-left:auto;">論点トラッカー v0.1</span>
-</header>
-<main>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">A</span><span class="cat-title">サービス定義・コンセプト</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
-      <tr><td>A-1</td><td>予約機能を持つべきか</td><td>ウォークイン文化に合わせ「来店きっかけサイト」に特化。団体予約のみ対応</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>A-2</td><td>初期ターゲットエリア</td><td>赤坂から開始→全国展開</td><td><span class="badge solved">解決済み</span></td></tr>
-    </table>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">A-2</span>
+      <span class="issue-title">ベーシックを無料にするかどうか（フリーミアム戦略）</span>
+      <span class="badge wip">🔄 検討中</span>
+    </div>
+    <p>掲載数を早期に増やすには無料が有効。食べログ・ホットペッパーともに無料掲載から始めた。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. 完全無料でスタート → 一定期間後に課金移行</li>
+        <li>B. 最初から3プラン制（無料枠あり）</li>
+        <li>C. 初期費用なし・月額制のみ</li>
+      </ul>
+    </div>
   </div>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">B</span><span class="cat-title">競合・差別化</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
-      <tr><td>B-1</td><td>HPB型依存構造との差別化</td><td>低掲載コスト・顧客情報店舗直保有・SNS自立集客をPremiumの訴求軸に</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>B-2</td><td>既存スナック検索サービスとの差別化</td><td>競合9社分析済み。来店きっかけ特化・チェックイン機能が差別化軸</td><td><span class="badge solved">解決済み</span></td></tr>
-    </table>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">A-3</span>
+      <span class="issue-title">求人機能のプラン配置</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>求人ニーズは高い。プレミアム限定にすると求人目的の店舗が他のプレミアム機能を不要と感じる可能性がある。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. プレミアム限定（現行案）</li>
+        <li>B. スタンダード以上に開放</li>
+        <li>C. 「求人プラン」として独立（例：¥19,800/月）</li>
+      </ul>
+    </div>
   </div>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">C</span><span class="cat-title">機能仕様</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
-      <tr><td>C-1</td><td>店舗CTA設計</td><td>電話（常時）・SNS問合せ（登録時のみ）・予約（団体のみ）の3要素</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>C-2</td><td>SNSリンクのテーブル設計</td><td>shop_sns_linksテーブル（LINE/Instagram/X/Facebook/TikTok/website対応）</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>C-3</td><td>GPS検索・リアルタイムランキング</td><td>TOP画面に実装。チェックイン数ベースの「盛り上がってる店」表示</td><td><span class="badge solved">解決済み</span></td></tr>
-    </table>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">A-4</span>
+      <span class="issue-title">成果報酬型の導入可否</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>月額固定は安定収益だが店舗に「効果がないと感じた時の解約リスク」がある。成果報酬はCVポイント計測と連動しやすい。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. 月額固定のみ（シンプル・管理しやすい）</li>
+        <li>B. 月額固定＋成果報酬（クーポン利用数・団体予約数に応じた従量）</li>
+        <li>C. 成果報酬のみ（初期費用ゼロで導入ハードル低い）</li>
+      </ul>
+    </div>
   </div>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">D</span><span class="cat-title">ユーザー機能</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
-      <tr><td>D-1</td><td>ユーザー会員機能の要否</td><td>無料・有料（¥1,000/月）の2段階で実装。チェックイン・フレンド機能付き</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>D-2</td><td>フレンド機能の設計</td><td>相互承認型。チェックイン時に友人通知</td><td><span class="badge solved">解決済み</span></td></tr>
-    </table>
+</div>
+
+<div class="cat" id="catB">
+  <div class="cat-head">
+    <span class="cat-label">B</span>
+    <span class="cat-title">CVポイント設計</span>
+    <span class="priority-tag badge" style="background:#fde8e8;color:#c62828;">🔴 最優先</span>
   </div>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">E</span><span class="cat-title">データ・法律</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
-      <tr><td>E-1</td><td>店舗データ収集手段</td><td>Zenrinデータ活用（Jさん担当）</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>E-2</td><td>法的論点</td><td>原田さんへ相談中</td><td><span class="badge open">検討中</span></td></tr>
-    </table>
+  <p style="font-size:0.82rem;color:#888;margin-bottom:1rem;">A（収益設計）と直結。どの指標を「成果」と定義するかで機能開発の優先度が変わる。</p>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">B-1</span>
+      <span class="issue-title">サービス定義を「来店きっかけサイト」に変更</span>
+      <span class="badge done">✅ 確定</span>
+    </div>
+    <p>スナックは流れ来店が主。予約コンバージョンを主指標にすることは実態と乖離する。</p>
+    <div class="decided">
+      <p><strong>決定内容：</strong></p>
+      <ul>
+        <li>Lv1：電話タップ / SNSタップ / MAP起動（全プラン計測）</li>
+        <li>Lv2：クーポン取得・今夜行けるタップ（スタンダード以上）</li>
+        <li>Lv3：団体予約完了・口コミ投稿（プレミアムのみ）</li>
+      </ul>
+    </div>
   </div>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">F</span><span class="cat-title">サービス名・ブランド</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>結論</th><th>状態</th></tr>
-      <tr><td>F-1</td><td>サービス名</td><td>スナログ / snacklog に決定</td><td><span class="badge solved">解決済み</span></td></tr>
-      <tr><td>F-2</td><td>ロゴ・カラーパレット</td><td>マイクシンボル+明朝体ロゴ確定。カラー6色確定</td><td><span class="badge solved">解決済み</span></td></tr>
-    </table>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">B-2</span>
+      <span class="issue-title">CVレポートをどこまで店舗に見せるか</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>電話タップ数などを店舗に見せることが「このサイトに掲載する価値」の証明になる。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. ベーシック：件数のみ / スタンダード：日別推移 / プレミアム：BI全開放</li>
+        <li>B. スタンダード以上でのみレポート機能を提供</li>
+        <li>C. 全プランに簡易レポート提供（掲載継続のインセンティブに）</li>
+      </ul>
+    </div>
   </div>
-  <div class="cat">
-    <div class="cat-header"><span class="cat-label">G</span><span class="cat-title">将来論点</span></div>
-    <table>
-      <tr><th>ID</th><th>論点</th><th>メモ</th><th>状態</th></tr>
-      <tr><td>G-1</td><td>インバウンド需要対応</td><td>競合ではスナック横丁のみ多言語対応（英・中・西）。差別化として有望</td><td><span class="badge future">将来検討</span></td></tr>
-      <tr><td>G-2</td><td>料金プラン価格帯確定</td><td>Basic/Standard/Premium の価格TBD</td><td><span class="badge open">検討中</span></td></tr>
-      <tr><td>G-3</td><td>業種拡張</td><td>美容室・エステ等への展開可能性</td><td><span class="badge future">将来検討</span></td></tr>
-    </table>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">B-3</span>
+      <span class="issue-title">クーポン設計の具体化</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>スナックはアナログ運営が多い。「画面を見せるだけ」レベルのシンプル設計が前提。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. 画面提示型（スタッフが目視確認）— 最もシンプル</li>
+        <li>B. コード入力型（店舗側でコード管理）</li>
+        <li>C. QRスキャン型（来店証明が最も確実だが導入ハードル高）</li>
+      </ul>
+    </div>
   </div>
+</div>
+
+<div class="cat" id="catC">
+  <div class="cat-head">
+    <span class="cat-label">C</span>
+    <span class="cat-title">店舗詳細ページ仕様</span>
+    <span class="priority-tag badge" style="background:#fff3e0;color:#e65100;">🟡 優先</span>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">C-1</span>
+      <span class="issue-title">CTAを3種に確定</span>
+      <span class="badge done">✅ 確定</span>
+    </div>
+    <div class="decided">
+      <p><strong>決定内容：</strong></p>
+      <ul>
+        <li>① 電話する（常時表示）</li>
+        <li>② SNSで問い合わせ（登録済みSNSのみ・複数対応）</li>
+        <li>③ 予約する（団体・二次会向け・予約URL登録時のみ）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">C-2</span>
+      <span class="issue-title">SNSリンクをプラットフォーム選択式（複数対応）に確定</span>
+      <span class="badge done">✅ 確定</span>
+    </div>
+    <div class="decided">
+      <p><strong>決定内容：</strong></p>
+      <ul>
+        <li>対応プラットフォーム：LINE / Instagram / X / Facebook / TikTok / Website</li>
+        <li><code>shop_sns_links</code>テーブルで1対多管理・display_order / is_activeフラグあり</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">C-3</span>
+      <span class="issue-title">予約CTAの文言</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>一人客に「予約」という言葉は馴染まない。シチュエーション（一人 / 団体）で文言を出し分けるか、シンプルに統一するかの判断が必要。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. 「予約する」で統一（シンプル）</li>
+        <li>B. 一人：「空席確認する」/ 団体：「席を確保する（2名以上）」で出し分け</li>
+        <li>C. 「問い合わせる」に統一（予約のニュアンスを避ける）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="cat" id="catD">
+  <div class="cat-head">
+    <span class="cat-label">D</span>
+    <span class="cat-title">法務・コンプライアンス</span>
+    <span class="priority-tag badge" style="background:#fde8e8;color:#c62828;">🔴 最優先</span>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">D-1</span>
+      <span class="issue-title">弁護士への法律相談</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>スナックは風俗営業法の対象。口コミ掲載・写真掲載・求人情報の取り扱いに関して法的リスクの確認が必要。</p>
+    <p class="note"><strong>担当：</strong> 原田さん確認後　<strong>優先度：</strong> 高</p>
+  </div>
+</div>
+
+<div class="cat" id="catE">
+  <div class="cat-head">
+    <span class="cat-label">E</span>
+    <span class="cat-title">技術・開発</span>
+    <span class="priority-tag badge" style="background:#fff3e0;color:#e65100;">🟡 優先</span>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">E-1</span>
+      <span class="issue-title">技術スタック・CMS方針の確定</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>独自CMSを構築するか既存プラットフォームを活用するかで開発コスト・期間が大きく変わる。</p>
+    <p class="note"><strong>担当：</strong> りょうちゃん</p>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">E-2</span>
+      <span class="issue-title">店舗情報の初期データ収集方法</span>
+      <span class="badge todo">❓ 未決</span>
+    </div>
+    <p>赤坂エリアのスナック店舗数は約150〜200軒（スプレッドシート調査値）。ゼンリン等の住所データ利用 or 手動収集 or 店舗自己申告の方針を決める。</p>
+    <p class="note"><strong>担当：</strong> Jさん</p>
+  </div>
+</div>
+
+<div class="cat" id="catF">
+  <div class="cat-head">
+    <span class="cat-label">F</span>
+    <span class="cat-title">サービス名・ブランディング</span>
+    <span class="priority-tag badge" style="background:#f5f5f5;color:#777;">⚪ 中優先</span>
+  </div>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">F-1</span>
+      <span class="issue-title">サービス名の確定</span>
+      <span class="badge done">✅ 確定</span>
+    </div>
+    <div class="decided">
+      <p><strong>決定内容：</strong></p>
+      <ul>
+        <li>サービス名：スナログ（snacklog）</li>
+        <li>ロゴ：マイクシンボル＋明朝体太字「スナログ」＋Georgia「snacklog」で確定</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="cat" id="catG">
+  <div class="cat-head">
+    <span class="cat-label">G</span>
+    <span class="cat-title">事業拡張・将来構想</span>
+    <span class="priority-tag badge" style="background:#f5f5f5;color:#777;">⚪ 中優先</span>
+  </div>
+  <p style="font-size:0.82rem;color:#888;margin-bottom:1rem;">現時点では赤坂エリアに集中するが、将来的な拡張方向性として早めに方針を持っておきたい論点。</p>
+
+  <div class="issue">
+    <div class="issue-head">
+      <span class="issue-id">G-1</span>
+      <span class="issue-title">インバウンド需要を取り込むかどうか</span>
+      <span class="badge future">❓ 将来検討</span>
+    </div>
+    <p>スナックは「日本独自の文化」として外国人観光客からの関心が高まっている。競合ではスナック横丁のみ英語・中国語・スペイン語に対応しており、他の検索サイトは完全に手つかずの領域。インバウンド対応は大きな差別化になりうる。</p>
+    <div class="options">
+      <p>検討オプション</p>
+      <ul>
+        <li>A. 初期フェーズはスコープ外。全国展開後に検討（日本語のみでスタート）</li>
+        <li>B. 英語対応のみ先行実装（店舗詳細ページの英語表示・英語検索）</li>
+        <li>C. 英語・中国語・韓国語の多言語対応（訪日外国人の主要言語）</li>
+        <li>D. 外国人向け「スナック体験ツアー」などの体験コンテンツも含めて展開</li>
+      </ul>
+    </div>
+    <p style="margin-top:0.5rem;font-size:0.82rem;color:#666;"><strong>競合状況：</strong> スナック横丁：英・中・西の多言語対応＋外国人ツアーを展開。唯一のインバウンド対応サービス。その他競合（スナックガイド・スナッカー・スナックナビ等）：日本語のみ。完全に手つかず。</p>
+  </div>
+</div>
+
 </main>
-<footer>スナログ プロジェクトドキュメント | 最終更新: 2026-04-10</footer>
-</body>
-</html>
+<footer>スナログ プロジェクトドキュメント | v0.1 | 最終更新: 2026-04-15</footer>
+</body></html>
