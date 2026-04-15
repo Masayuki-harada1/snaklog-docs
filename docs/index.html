@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>スナログ プロジェクトドキュメント</title>
 <style>
   :root{--bg:#f5f2eb;--text:#1a1730;--gold:#c9aa6e;--gold-dark:#7a5508;--dark:#131220;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN',sans-serif;min-height:100vh;}
   header{background:var(--dark);padding:1.75rem 2rem;}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;padding:3rem 2rem;max-width:900px;margin:0 auto;}
-  .card{background:white;border:1px solid #e0d9cc;border-radius:12px;padding:2rem;text-decoration:none;color:var(--text);transition:box-shadow 0.2s;display:block;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;padding:2.5rem 2rem;max-width:960px;margin:0 auto;}
+  .card{background:white;border:1px solid #e0d9cc;border-radius:12px;padding:1.5rem;text-decoration:none;color:var(--text);transition:box-shadow 0.2s;display:block;}
   .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.1);}
-  .card .icon{font-size:2rem;margin-bottom:1rem;}
-  .card h2{font-size:1.05rem;color:var(--gold-dark);margin-bottom:0.5rem;}
-  .card p{font-size:0.85rem;color:#666;line-height:1.6;}
+  .card .icon{font-size:1.75rem;margin-bottom:0.75rem;}
+  .card h2{font-size:1rem;color:var(--gold-dark);margin-bottom:0.4rem;}
+  .card p{font-size:0.82rem;color:#666;line-height:1.6;}
   footer{text-align:center;padding:2rem;color:#aaa;font-size:0.8rem;}
 </style>
 </head>
 <body>
-<header><div style="display:flex;align-items:center;gap:12px;">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44" style="flex-shrink:0">
-  <rect width="44" height="44" rx="10" fill="#1a1730"/>
-  <rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/>
-  <path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/>
-  <rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/>
-</svg>
-  <div>
-    <div style="color:#c9aa6e;font-size:1.5rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div>
-    <div style="color:#888;font-size:0.75rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:2px;">snacklog</div>
+<header>
+  <div style="display:flex;align-items:center;gap:14px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44" style="flex-shrink:0"><rect width="44" height="44" rx="10" fill="#1a1730"/><rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/><path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/><rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/></svg>
+    <div>
+      <div style="color:#c9aa6e;font-size:1.6rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div>
+      <div style="color:#888;font-size:0.78rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:3px;">snacklog</div>
+    </div>
   </div>
-</div></header>
+</header>
 <div class="cards">
   <a class="card" href="spec.html">
     <div class="icon">📋</div>
     <h2>サービス仕様書</h2>
-    <p>スナログのサービス設計・機能仕様・マネタイズプランをまとめた仕様書</p>
+    <p>サービス設計・機能仕様・マネタイズプラン・サイトマップ・ページ詳細をまとめた仕様書</p>
   </a>
   <a class="card" href="issues.html">
     <div class="icon">🗂</div>
     <h2>論点トラッカー</h2>
-    <p>A〜G カテゴリーの検討論点・解決状況を管理するトラッカー</p>
+    <p>A〜G カテゴリー15件の検討論点・解決状況・オプションを管理するトラッカー</p>
   </a>
   <a class="card" href="competitive.html">
     <div class="icon">📊</div>
     <h2>競合分析</h2>
-    <p>スナック検索サービス9社の競合分析レポート</p>
+    <p>スナック検索サービス9社の機能・マネタイズ・差別化の比較分析レポート</p>
+  </a>
+  <a class="card" href="finance.html">
+    <div class="icon">💰</div>
+    <h2>収支計画</h2>
+    <p>収益モデル・コスト構造・フェーズ別収支試算・KPI目標をまとめた財務計画（試算）</p>
   </a>
 </div>
-<footer>最終更新: 2026-04-10 | snaklog project</footer>
+<footer>最終更新: 2026-04-15 | snaklog project</footer>
 </body>
 </html>
