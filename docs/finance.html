@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>スナログ 収支計画 v0.1</title><style>
+  :root{--bg:#f5f2eb;--text:#1a1730;--gold:#c9aa6e;--gold-dark:#7a5508;--dark:#131220;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;font-size:14px;line-height:1.7;}
+  header{background:var(--dark);padding:1rem 1.5rem;display:flex;align-items:center;gap:0;}
+  nav{background:var(--dark);border-top:1px solid #2a2740;padding:0.4rem 1.5rem;display:flex;gap:1rem;flex-wrap:wrap;}
+  nav a{color:#aaa;text-decoration:none;font-size:0.78rem;}nav a:hover{color:var(--gold);}
+  main{max-width:960px;margin:0 auto;padding:1.5rem;}
+  .sec{background:white;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;border:1px solid #e0d9cc;}
+  .sec>h2{color:var(--gold-dark);font-size:1rem;margin-bottom:1rem;padding-bottom:0.4rem;border-bottom:2px solid var(--gold);}
+  .sec h3{font-size:0.92rem;color:var(--text);margin:1rem 0 0.4rem;padding:0.3rem 0.6rem;background:#f5f2eb;border-left:3px solid var(--gold);font-weight:600;}
+  p{margin:0.3rem 0;color:#444;font-size:0.87rem;}
+  ul{padding-left:1.4rem;color:#444;font-size:0.87rem;}ul li{margin:0.2rem 0;}
+  table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:0.6rem 0;}
+  th{background:var(--dark);color:var(--gold);padding:7px 10px;text-align:left;}
+  td{padding:7px 10px;border-bottom:1px solid #f0ebe0;vertical-align:top;}
+  td.right{text-align:right;font-family:monospace;}
+  td.total{font-weight:700;background:#faf8f3;}
+  tr:hover td{background:#faf8f3;}
+  .badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:0.72rem;}
+  .todo{background:#f5f5f5;color:#777;}
+  .wip{background:#fff3e0;color:#e65100;}
+  .note{font-size:0.8rem;color:#888;padding:0.4rem 0.6rem;background:#faf8f3;border-radius:4px;margin-top:0.3rem;}
+  .metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.75rem;margin:0.75rem 0;}
+  .metric{background:#f5f2eb;border-radius:8px;padding:0.75rem 1rem;text-align:center;}
+  .metric .num{font-size:1.4rem;font-weight:700;color:var(--gold-dark);}
+  .metric .label{font-size:0.75rem;color:#888;margin-top:2px;}
+  footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
+</style></head>
+<body>
+<header>
+  <a href="index.html" style="color:#888;text-decoration:none;font-size:0.8rem;white-space:nowrap;margin-right:12px;">← 一覧へ</a>
+  <div style="display:flex;align-items:center;gap:10px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" style="flex-shrink:0"><rect width="44" height="44" rx="10" fill="#1a1730"/><rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/><path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/><rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/></svg><div><div style="color:#c9aa6e;font-size:1.15rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div><div style="color:#888;font-size:0.68rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:2px;">snacklog</div></div></div>
+  <span style="color:#666;font-size:0.78rem;margin-left:auto;">収支計画 v0.1（試算）</span>
+</header>
+<nav>
+  <a href="#premise">前提条件</a>
+  <a href="#revenue">収益モデル</a>
+  <a href="#cost">コスト構造</a>
+  <a href="#projection">収支試算</a>
+  <a href="#kpi">KPI・目標</a>
+  <a href="#todo">未決事項</a>
+</nav>
+<main>
+
+<div class="sec">
+  <p style="color:#e65100;font-size:0.82rem;padding:0.5rem 0.75rem;background:#fff3e0;border-radius:6px;border-left:3px solid #e65100;">
+    ⚠️ この収支計画は現時点での試算・たたき台です。価格・店舗数・コストはビジネスモデル確定後に更新します。
+  </p>
+</div>
+
+<div class="sec" id="premise">
+  <h2>前提条件</h2>
+  <h3>フェーズ定義</h3>
+  <table>
+    <tr><th>フェーズ</th><th>期間（目安）</th><th>エリア</th><th>目標店舗数</th></tr>
+    <tr><td>Phase0（現在）</td><td>〜MVP開発完了</td><td>—</td><td>—</td></tr>
+    <tr><td>Phase1（MVP）</td><td>開発完了後〜6ヶ月</td><td>赤坂エリア</td><td>50〜100店舗</td></tr>
+    <tr><td>Phase2</td><td>7〜18ヶ月</td><td>東京都心</td><td>500〜1,000店舗</td></tr>
+    <tr><td>Phase3</td><td>19ヶ月〜</td><td>全国</td><td>5,000店舗〜</td></tr>
+  </table>
+  <p class="note">赤坂エリアのスナック推定店舗数：約150〜200軒（スプレッドシート調査値）</p>
+
+  <h3>掲載率の仮定</h3>
+  <table>
+    <tr><th>プラン</th><th>Phase1 目標構成比</th><th>Phase2 目標構成比</th></tr>
+    <tr><td>ベーシック（無料〜）</td><td>70%</td><td>60%</td></tr>
+    <tr><td>スタンダード（¥9,800〜/月）</td><td>25%</td><td>30%</td></tr>
+    <tr><td>プレミアム（¥29,800〜/月）</td><td>5%</td><td>10%</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="revenue">
+  <h2>収益モデル</h2>
+  <h3>収益源の一覧</h3>
+  <table>
+    <tr><th>収益源</th><th>単価</th><th>対象</th><th>状態</th></tr>
+    <tr><td>ベーシックプラン掲載料</td><td>無料〜数千円/月</td><td>店舗</td><td><span class="badge todo">未確定</span></td></tr>
+    <tr><td>スタンダードプラン掲載料</td><td>¥9,800〜/月</td><td>店舗</td><td><span class="badge todo">未確定</span></td></tr>
+    <tr><td>プレミアムプラン掲載料</td><td>¥29,800〜/月</td><td>店舗</td><td><span class="badge todo">未確定</span></td></tr>
+    <tr><td>ユーザープレミアム会員</td><td>¥500/月</td><td>来店ユーザー</td><td><span class="badge todo">未確定</span></td></tr>
+    <tr><td>成果報酬（クーポン・予約）</td><td>従量課金（TBD）</td><td>店舗</td><td><span class="badge wip">検討中</span></td></tr>
+  </table>
+
+  <h3>Phase1 月次収益試算（店舗100軒・たたき台）</h3>
+  <div class="metric-grid">
+    <div class="metric"><div class="num">70店</div><div class="label">ベーシック（無料想定）</div></div>
+    <div class="metric"><div class="num">25店</div><div class="label">スタンダード</div></div>
+    <div class="metric"><div class="num">5店</div><div class="label">プレミアム</div></div>
+  </div>
+  <table>
+    <tr><th>プラン</th><th>店舗数</th><th>単価/月</th><th>月間収益</th></tr>
+    <tr><td>ベーシック</td><td>70店</td><td>¥0（初期無料想定）</td><td class="right">¥0</td></tr>
+    <tr><td>スタンダード</td><td>25店</td><td>¥9,800</td><td class="right">¥245,000</td></tr>
+    <tr><td>プレミアム</td><td>5店</td><td>¥29,800</td><td class="right">¥149,000</td></tr>
+    <tr><td colspan="3" class="total">月間収益合計（店舗のみ）</td><td class="right total">¥394,000</td></tr>
+  </table>
+  <p class="note">ユーザー課金（¥500/月）は会員数が増加するPhase2以降に収益貢献見込み。</p>
+</div>
+
+<div class="sec" id="cost">
+  <h2>コスト構造</h2>
+  <h3>開発コスト（初期）</h3>
+  <table>
+    <tr><th>項目</th><th>概算</th><th>備考</th></tr>
+    <tr><td>フロントエンド開発</td><td>TBD</td><td>りょうちゃん担当</td></tr>
+    <tr><td>バックエンド・DB開発</td><td>TBD</td><td>りょうちゃん担当</td></tr>
+    <tr><td>デザイン</td><td>TBD</td><td>UI/UX設計含む</td></tr>
+    <tr><td>法務費用（弁護士相談）</td><td>TBD</td><td>原田さん経由</td></tr>
+    <tr><td>初期データ収集（ゼンリン等）</td><td>TBD</td><td>Jさん担当</td></tr>
+  </table>
+
+  <h3>ランニングコスト（月次想定）</h3>
+  <table>
+    <tr><th>項目</th><th>概算/月</th><th>備考</th></tr>
+    <tr><td>サーバー・インフラ（AWS/GCP等）</td><td>¥10,000〜50,000</td><td>フェーズにより変動</td></tr>
+    <tr><td>地図API（Google Maps）</td><td>¥5,000〜30,000</td><td>アクセス数により変動</td></tr>
+    <tr><td>ドメイン・SSL</td><td>〜¥2,000</td><td>年間費用の月割り</td></tr>
+    <tr><td>営業・マーケティング</td><td>TBD</td><td>Phase1は人力営業中心</td></tr>
+    <tr><td>人件費</td><td>TBD</td><td>外部委託 vs 内製により変動</td></tr>
+    <tr><td colspan="2" class="total">月次固定費合計（最小構成）</td><td class="total">〜¥60,000</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="projection">
+  <h2>収支試算シナリオ</h2>
+  <h3>Phase1 損益分岐点（たたき台）</h3>
+  <table>
+    <tr><th>条件</th><th>必要店舗数（スタンダード換算）</th></tr>
+    <tr><td>月次固定費 ¥60,000 の回収</td><td>スタンダード約7店舗分（¥9,800×7 = ¥68,600）</td></tr>
+    <tr><td>月次固定費 ¥150,000 の回収</td><td>スタンダード約16店舗分</td></tr>
+  </table>
+  <p class="note">赤坂エリア100店舗獲得・25店スタンダード転換で月商約¥40万。固定費¥6万との差額が営業利益（Phase1試算）。</p>
+
+  <h3>Phase2 目標シナリオ（1,000店舗）</h3>
+  <table>
+    <tr><th>プラン</th><th>店舗数</th><th>月間収益</th></tr>
+    <tr><td>ベーシック</td><td>600店</td><td class="right">¥0（無料想定）</td></tr>
+    <tr><td>スタンダード</td><td>300店</td><td class="right">¥2,940,000</td></tr>
+    <tr><td>プレミアム</td><td>100店</td><td class="right">¥2,980,000</td></tr>
+    <tr><td colspan="2" class="total">月間収益合計</td><td class="right total">¥5,920,000</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="kpi">
+  <h2>KPI・マイルストーン</h2>
+  <table>
+    <tr><th>指標</th><th>Phase1目標</th><th>Phase2目標</th></tr>
+    <tr><td>掲載店舗数</td><td>50〜100店</td><td>500〜1,000店</td></tr>
+    <tr><td>スタンダード以上転換率</td><td>30%</td><td>40%</td></tr>
+    <tr><td>月間アクティブユーザー</td><td>1,000〜5,000人</td><td>50,000人〜</td></tr>
+    <tr><td>会員登録数</td><td>500人</td><td>10,000人〜</td></tr>
+    <tr><td>プレミアム会員転換率</td><td>5%</td><td>10%〜</td></tr>
+    <tr><td>月次収益</td><td>¥300,000〜</td><td>¥5,000,000〜</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="todo">
+  <h2>未決事項・要確定項目 <span class="badge wip">ブラッシュアップ中</span></h2>
+  <ul>
+    <li>各プランの価格確定（A-1参照）</li>
+    <li>ベーシックプランの無料 vs 有料方針（A-2参照）</li>
+    <li>成果報酬型の導入可否（A-4参照）</li>
+    <li>初期開発コストの見積もり（りょうちゃん確認後）</li>
+    <li>人件費・運営体制の確定</li>
+    <li>マーケティング費用の試算</li>
+    <li>投資調達の要否（自己資金 vs 外部調達）</li>
+  </ul>
+</div>
+
+</main>
+<footer>スナログ プロジェクトドキュメント | v0.1（試算）| 最終更新: 2026-04-15</footer>
+</body></html>
