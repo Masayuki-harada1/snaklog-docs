@@ -44,6 +44,26 @@
   .sm-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;margin-top:0.5rem;}
   .sm-legend-item{display:flex;align-items:center;gap:0.3rem;}
   .sm-dot{width:12px;height:12px;border-radius:3px;}
+
+  .memo-block{margin-top:0.75rem;border-top:1px dashed #e0d9cc;padding-top:0.6rem;}
+  .memo-toggle{background:none;border:1px dashed #c9aa6e;color:#7a5508;border-radius:6px;padding:3px 10px;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit;}
+  .memo-toggle:hover{background:#faf8f3;}
+  .memo-toggle .memo-dot{width:7px;height:7px;border-radius:50%;background:#c9aa6e;flex-shrink:0;}
+  .memo-toggle .memo-count{font-size:0.7rem;background:#f5f2eb;color:#7a5508;border:1px solid #e0d4be;border-radius:3px;padding:0 5px;margin-left:2px;}
+  .memo-area{margin-top:0.5rem;display:none;}
+  .memo-area.open{display:block;}
+  .memo-list{margin-bottom:0.5rem;}
+  .memo-item{background:#fffdf8;border:1px solid #f0e8d0;border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:0.82rem;position:relative;}
+  .memo-item-text{color:#444;line-height:1.6;white-space:pre-wrap;word-break:break-word;padding-right:60px;}
+  .memo-item-meta{font-size:0.72rem;color:#aaa;margin-top:4px;}
+  .memo-item-del{position:absolute;top:8px;right:8px;background:none;border:none;color:#ccc;cursor:pointer;font-size:12px;padding:2px 6px;border-radius:4px;}
+  .memo-item-del:hover{background:#fce4e4;color:#c62828;}
+  .memo-input-row{display:flex;gap:6px;align-items:flex-start;}
+  .memo-textarea{flex:1;border:1px solid #e0d9cc;border-radius:6px;padding:7px 10px;font-size:0.82rem;font-family:inherit;resize:vertical;min-height:60px;color:#1a1730;background:#fff;}
+  .memo-textarea:focus{outline:none;border-color:#c9aa6e;}
+  .memo-save-btn{background:#1a1730;color:#c9aa6e;border:none;border-radius:6px;padding:8px 14px;font-size:0.78rem;cursor:pointer;white-space:nowrap;font-family:inherit;}
+  .memo-save-btn:hover{opacity:0.85;}
+  .memo-empty{font-size:0.78rem;color:#bbb;padding:4px 0;}
 </style></head>
 <body>
 <header>
@@ -68,6 +88,20 @@
   <ul><li>食べログ（網羅性・透明性）</li><li>エアビー（市場原理）</li><li>Airレジ / TableCheck（経営管理）</li><li>バイトル / ランサーズ（求人）</li></ul>
   <h4>3者が使うプラットフォーム</h4>
   <p>来店ユーザー ／ 店舗オーナー・ママ ／ 求職者（働き手）</p>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="concept">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="concept">
+      <div class="memo-list" data-sid="concept"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="concept" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="concept">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="persona">
@@ -80,6 +114,20 @@
     <tr><td>④</td><td>女性客・カップル（20〜40代）</td><td>女性でも入りやすいか不安 / 映え重視</td><td>女性歓迎タグ / 写真・内装・BGM情報</td><td>16〜60万人</td></tr>
   </table>
   <blockquote>共通の心理的ハードル：雰囲気・料金の不透明さ。「予約」より「今夜ふらっと行く」即時行動が多い。</blockquote>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="persona">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="persona">
+      <div class="memo-list" data-sid="persona"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="persona" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="persona">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="business">
@@ -114,6 +162,20 @@
     <tr><td>プレミアム限定クーポン</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
     <tr><td>広告非表示</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
   </table>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="business">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="business">
+      <div class="memo-list" data-sid="business"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="business" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="business">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="cv">
@@ -124,6 +186,20 @@
     <tr><td>Lv2</td><td>クーポン取得・今夜行けるタップ</td><td>開封数・タップ数</td><td>スタンダード〜</td></tr>
     <tr><td>Lv3</td><td>団体予約完了・口コミ投稿</td><td>フォーム送信数・投稿数</td><td>プレミアム</td></tr>
   </table>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="cv">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="cv">
+      <div class="memo-list" data-sid="cv"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="cv" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="cv">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="sitemap">
@@ -184,6 +260,20 @@
     <tr><td>事業承継・店舗買収相談</td><td><code>/ma</code></td><td>後継者不在オーナーと買い手のマッチング支援</td><td>店舗オーナー・買い手</td><td><span class="badge todo">Phase4</span></td></tr>
     <tr><td>プラン比較</td><td><code>/pricing</code></td><td>店舗向け3プラン・ユーザー向け2プラン比較</td><td>店舗・ユーザー</td><td><span class="badge todo">Phase2</span></td></tr>
   </table>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="sitemap">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="sitemap">
+      <div class="memo-list" data-sid="sitemap"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="sitemap" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="sitemap">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="pages">
@@ -391,6 +481,20 @@
     <li>各プランCTAボタン</li>
     <li>よくある質問（FAQ）</li>
   </ul>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="pages">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="pages">
+      <div class="memo-list" data-sid="pages"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="pages" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="pages">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="cta">
@@ -403,6 +507,20 @@
   </ul>
   <p><strong>表示優先順位：</strong> ① 電話する → ② SNS（display_order順）→ ③ 予約する → ④ チェックイン</p>
   <p class="note">「予約する」の文言出し分けを検討中（論点C-3）。</p>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="cta">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="cta">
+      <div class="memo-list" data-sid="cta"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="cta" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="cta">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="data">
@@ -437,6 +555,20 @@
     <tr><td>notifications</td><td>id, user_id, type, content, is_read, created_at</td><td>通知管理</td></tr>
     <tr><td>notification_settings</td><td>user_id, friend_checkin_notify（boolean）</td><td>通知ON/OFF設定</td></tr>
   </table>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="data">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="data">
+      <div class="memo-list" data-sid="data"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="data" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="data">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="brand">
@@ -453,6 +585,20 @@
     <tr><td>ダーク背景</td><td>#131220</td></tr>
     <tr><td>アイコン背景</td><td>#2d2856</td></tr>
   </table>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="brand">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="brand">
+      <div class="memo-list" data-sid="brand"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="brand" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="brand">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="ux">
@@ -464,6 +610,20 @@
     <li>店舗・求人向け入口はメニューに集約</li>
   </ul>
   <p>初心者でも入れるよう、料金の透明性・写真・ママ紹介を前面に出す。チェックイン・フレンド機能で「今夜誰かと飲みに行く」自然な動線を作る。</p>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="ux">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="ux">
+      <div class="memo-list" data-sid="ux"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="ux" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="ux">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="competitive">
@@ -477,6 +637,20 @@
     <tr><td>スナックナビ</td><td>月6万セッション・SNSとの体系化なし</td></tr>
   </table>
   <p><strong>差別化の核：</strong> 「信頼性の高い情報 ＋ 来店きっかけの導線 ＋ チェックイン・フレンドによる"今夜一緒に飲みに行く"体験の創出」</p>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="competitive">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="competitive">
+      <div class="memo-list" data-sid="competitive"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="competitive" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="competitive">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sec" id="todo">
@@ -492,6 +666,20 @@
     <tr><td>ユーザープレミアム会員（¥500/月）の訴求軸確定</td><td>—</td><td><span class="badge todo">未着手</span></td></tr>
     <tr><td>フレンド検索UIの設計（ニックネーム or QRコード等）</td><td>—</td><td><span class="badge todo">未着手</span></td></tr>
   </table>
+  <div class="memo-block">
+    <button class="memo-toggle" data-sid="todo">
+      <span class="memo-dot"></span>
+      <span class="memo-toggle-label">メモを追加・確認</span>
+      <span class="memo-count" style="display:none;"></span>
+    </button>
+    <div class="memo-area" data-sid="todo">
+      <div class="memo-list" data-sid="todo"></div>
+      <div class="memo-input-row">
+        <textarea class="memo-textarea" data-sid="todo" placeholder="このセクションへのメモを入力（Cmd+Enterで保存）"></textarea>
+        <button class="memo-save-btn" data-sid="todo">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 </main>
@@ -621,4 +809,99 @@
 </div>
 
 <footer>スナログ プロジェクトドキュメント | v0.2 | 最終更新: 2026-04-15</footer>
-</body></html>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'snaklog_spec_memos';
+
+  function loadMemos() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; }
+  }
+  function saveMemos(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+  function formatDate(ts) {
+    const d = new Date(ts);
+    return d.getFullYear() + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + String(d.getDate()).padStart(2,'0') + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  }
+
+  function renderMemos(sectionId) {
+    const memos = loadMemos();
+    const list = memos[sectionId] || [];
+    const listEl = document.querySelector('.memo-list[data-sid="'+sectionId+'"]');
+    const toggle = document.querySelector('.memo-toggle[data-sid="'+sectionId+'"]');
+    const countEl = toggle.querySelector('.memo-count');
+
+    listEl.innerHTML = '';
+    if (list.length === 0) {
+      listEl.innerHTML = '<div class="memo-empty">メモはまだありません</div>';
+    } else {
+      list.forEach(function(m, i) {
+        const item = document.createElement('div');
+        item.className = 'memo-item';
+        item.innerHTML = '<div class="memo-item-text">'+escHtml(m.text)+'</div><div class="memo-item-meta">'+formatDate(m.ts)+'</div><button class="memo-item-del" data-idx="'+i+'">削除</button>';
+        item.querySelector('.memo-item-del').addEventListener('click', function() {
+          deleteMemo(sectionId, i);
+        });
+        listEl.appendChild(item);
+      });
+    }
+    countEl.style.display = list.length > 0 ? '' : 'none';
+    countEl.textContent = list.length;
+  }
+
+  function addMemo(sectionId, text) {
+    if (!text.trim()) return;
+    const memos = loadMemos();
+    if (!memos[sectionId]) memos[sectionId] = [];
+    memos[sectionId].unshift({ text: text.trim(), ts: Date.now() });
+    saveMemos(memos);
+    renderMemos(sectionId);
+  }
+
+  function deleteMemo(sectionId, idx) {
+    const memos = loadMemos();
+    if (memos[sectionId]) {
+      memos[sectionId].splice(idx, 1);
+      saveMemos(memos);
+      renderMemos(sectionId);
+    }
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function initMemoBlocks() {
+    document.querySelectorAll('.memo-toggle').forEach(function(btn) {
+      const sid = btn.getAttribute('data-sid');
+      renderMemos(sid);
+
+      btn.addEventListener('click', function() {
+        const area = document.querySelector('.memo-area[data-sid="'+sid+'"]');
+        area.classList.toggle('open');
+        btn.querySelector('.memo-toggle-label').textContent = area.classList.contains('open') ? 'メモを閉じる' : 'メモを追加・確認';
+      });
+
+      const saveBtn = document.querySelector('.memo-save-btn[data-sid="'+sid+'"]');
+      const ta = document.querySelector('.memo-textarea[data-sid="'+sid+'"]');
+      saveBtn.addEventListener('click', function() {
+        addMemo(sid, ta.value);
+        ta.value = '';
+      });
+      ta.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+          addMemo(sid, ta.value);
+          ta.value = '';
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMemoBlocks);
+  } else {
+    initMemoBlocks();
+  }
+})();
+</script></body></html>
