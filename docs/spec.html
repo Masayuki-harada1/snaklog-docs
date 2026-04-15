@@ -6,16 +6,14 @@
   body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;font-size:14px;line-height:1.7;}
   header{background:var(--dark);padding:1rem 1.5rem;display:flex;align-items:center;gap:0;}
   nav{background:var(--dark);border-top:1px solid #2a2740;padding:0.4rem 1.5rem;display:flex;gap:1rem;flex-wrap:wrap;}
-  nav a{color:#aaa;text-decoration:none;font-size:0.78rem;}
-  nav a:hover{color:var(--gold);}
+  nav a{color:#aaa;text-decoration:none;font-size:0.78rem;}nav a:hover{color:var(--gold);}
   main{max-width:960px;margin:0 auto;padding:1.5rem;}
   .sec{background:white;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;border:1px solid #e0d9cc;}
   .sec>h2{color:var(--gold-dark);font-size:1rem;margin-bottom:1rem;padding-bottom:0.4rem;border-bottom:2px solid var(--gold);display:flex;align-items:center;gap:0.5rem;}
   .sec h3{font-size:0.92rem;color:var(--text);margin:1.1rem 0 0.4rem;padding:0.3rem 0.6rem;background:#f5f2eb;border-left:3px solid var(--gold);font-weight:600;}
   .sec h4{font-size:0.85rem;color:var(--gold-dark);margin:0.75rem 0 0.25rem;font-weight:600;}
   p{margin:0.3rem 0;color:#444;font-size:0.87rem;}
-  ul{padding-left:1.4rem;color:#444;font-size:0.87rem;}
-  ul li{margin:0.2rem 0;}
+  ul{padding-left:1.4rem;color:#444;font-size:0.87rem;}ul li{margin:0.2rem 0;}
   table{width:100%;border-collapse:collapse;font-size:0.82rem;margin:0.6rem 0;}
   th{background:var(--dark);color:var(--gold);padding:7px 10px;text-align:left;}
   td{padding:7px 10px;border-bottom:1px solid #f0ebe0;vertical-align:top;}
@@ -33,6 +31,19 @@
   code{background:#f0ede4;padding:1px 5px;border-radius:3px;font-family:monospace;font-size:0.85em;}
   .note{font-size:0.8rem;color:#888;padding:0.4rem 0.6rem;background:#faf8f3;border-radius:4px;margin-top:0.3rem;}
   footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
+  /* サイトマップ */
+  .sitemap{display:flex;flex-direction:column;gap:1rem;}
+  .sm-row{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .sm-node{border-radius:8px;padding:0.5rem 0.75rem;font-size:0.8rem;line-height:1.4;min-width:100px;}
+  .sm-root{background:var(--dark);color:var(--gold);font-weight:700;}
+  .sm-mvp{background:#1a1730;color:#c9aa6e;border:2px solid #c9aa6e;}
+  .sm-ph2{background:#f5f2eb;color:#7a5508;border:1px dashed #c9aa6e;}
+  .sm-user{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;}
+  .sm-store{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9;}
+  .sm-arrow{color:#aaa;font-size:1.2rem;display:flex;align-items:center;}
+  .sm-legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;margin-top:0.5rem;}
+  .sm-legend-item{display:flex;align-items:center;gap:0.3rem;}
+  .sm-dot{width:12px;height:12px;border-radius:3px;}
 </style></head>
 <body>
 <header>
@@ -41,39 +52,24 @@
   <span style="color:#666;font-size:0.78rem;margin-left:auto;">仕様ドキュメント v0.2</span>
 </header>
 <nav>
-  <a href="#concept">01 コンセプト</a>
-  <a href="#persona">02 ペルソナ</a>
-  <a href="#business">03 ビジネスモデル</a>
-  <a href="#cv">04 CVポイント</a>
-  <a href="#sitemap">05 サイトマップ</a>
-  <a href="#pages">06 ページ詳細</a>
-  <a href="#cta">07 CTA仕様</a>
-  <a href="#data">08 データ設計</a>
-  <a href="#brand">09 ブランド</a>
-  <a href="#ux">10 UI/UX</a>
-  <a href="#competitive">11 競合分析</a>
-  <a href="#todo">12 未決事項</a>
+  <a href="#concept">01 コンセプト</a><a href="#persona">02 ペルソナ</a><a href="#business">03 ビジネスモデル</a>
+  <a href="#cv">04 CVポイント</a><a href="#sitemap">05 サイトマップ</a><a href="#pages">06 ページ詳細</a>
+  <a href="#cta">07 CTA仕様</a><a href="#data">08 データ設計</a><a href="#brand">09 ブランド</a>
+  <a href="#ux">10 UI/UX</a><a href="#competitive">11 競合分析</a><a href="#todo">12 未決事項</a>
 </nav>
 <main>
 
-<!-- 01 コンセプト -->
 <div class="sec" id="concept">
   <h2>01 サービスコンセプト <span class="badge done">確定</span></h2>
   <p><strong>サービス名：</strong> スナログ（snacklog）</p>
   <p style="margin-top:0.5rem"><strong>一言コンセプト：</strong><br>「初心者・女性でも安心して行ける」赤坂特化のスナック検索・口コミ・来店きっかけサイト。将来的には全国展開を想定した拡張可能な構造。</p>
   <p style="margin-top:0.5rem"><strong>重要な定義：</strong><br>「予約サイト」ではなく <strong>「来店きっかけサイト」</strong> と定義する。スナックの来店行動は流れ来店が主であり、予約コンバージョンは計測・期待できない。</p>
   <h4>参照モデル</h4>
-  <ul>
-    <li>食べログ（網羅性・透明性）</li>
-    <li>エアビー（市場原理）</li>
-    <li>Airレジ / TableCheck（経営管理）</li>
-    <li>バイトル / ランサーズ（求人）</li>
-  </ul>
+  <ul><li>食べログ（網羅性・透明性）</li><li>エアビー（市場原理）</li><li>Airレジ / TableCheck（経営管理）</li><li>バイトル / ランサーズ（求人）</li></ul>
   <h4>3者が使うプラットフォーム</h4>
   <p>来店ユーザー ／ 店舗オーナー・ママ ／ 求職者（働き手）</p>
 </div>
 
-<!-- 02 ペルソナ -->
 <div class="sec" id="persona">
   <h2>02 ターゲットユーザー（ペルソナ） <span class="badge done">確定</span></h2>
   <table>
@@ -86,19 +82,11 @@
   <blockquote>共通の心理的ハードル：雰囲気・料金の不透明さ。「予約」より「今夜ふらっと行く」即時行動が多い。</blockquote>
 </div>
 
-<!-- 03 ビジネスモデル -->
 <div class="sec" id="business">
   <h2>03 ビジネスモデル・収益設計 <span class="badge wip">ブラッシュアップ中</span></h2>
-
-  <h3>店舗向けプラン</h3>
-  <p>上位プランは下位プランの全機能を含む（累積型）。</p>
+  <h3>店舗向けプラン（上位プランは下位の全機能を含む）</h3>
   <table>
-    <tr>
-      <th>機能</th>
-      <th class="center">ベーシック<br><small style="font-weight:normal">無料〜数千円/月</small></th>
-      <th class="center">スタンダード<br><small style="font-weight:normal">¥9,800〜/月</small></th>
-      <th class="center">プレミアム<br><small style="font-weight:normal">¥29,800〜/月</small></th>
-    </tr>
+    <tr><th>機能</th><th class="center">ベーシック<br><small>無料〜数千円/月</small></th><th class="center">スタンダード<br><small>¥9,800〜/月</small></th><th class="center">プレミアム<br><small>¥29,800〜/月</small></th></tr>
     <tr><td>基本掲載（住所・営業時間・電話）</td><td class="center check-yes">●</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>SNSリンク（LINE/Instagram/X等）</td><td class="center check-yes">●</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>写真掲載</td><td class="center">3枚</td><td class="center">10枚</td><td class="center">無制限＋動画</td></tr>
@@ -113,15 +101,9 @@
     <tr><td>BIダッシュボード（売上・来客推移）</td><td class="center check-no">—</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
   </table>
   <p class="note">価格・機能詳細はビジネスモデルBU後に確定。検討論点リスト A-1〜A-4 参照。</p>
-
-  <h3>ユーザー向け会員プラン <span class="badge new">v0.2追加</span></h3>
-  <p>上位プランは下位プランの全機能を含む（累積型）。</p>
+  <h3>ユーザー向け会員プラン（上位プランは下位の全機能を含む） <span class="badge new">v0.2追加</span></h3>
   <table>
-    <tr>
-      <th>機能</th>
-      <th class="center">ベーシック会員<br><small style="font-weight:normal">無料</small></th>
-      <th class="center">プレミアム会員<br><small style="font-weight:normal">¥500/月</small></th>
-    </tr>
+    <tr><th>機能</th><th class="center">ベーシック会員<br><small>無料</small></th><th class="center">プレミアム会員<br><small>¥500/月</small></th></tr>
     <tr><td>スナック検索・閲覧</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>お気に入り店舗登録</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>口コミ投稿</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
@@ -134,7 +116,6 @@
   </table>
 </div>
 
-<!-- 04 CVポイント -->
 <div class="sec" id="cv">
   <h2>04 成果ポイント（CVポイント）設計 <span class="badge done">方針確定</span></h2>
   <table>
@@ -145,54 +126,101 @@
   </table>
 </div>
 
-<!-- 05 サイトマップ -->
 <div class="sec" id="sitemap">
   <h2>05 サイト構成・サイトマップ <span class="badge done">確定</span></h2>
+
+  <div class="sitemap">
+    <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+      <div class="sm-node sm-root">/ TOP</div>
+      <div class="sm-arrow">→</div>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+          <div class="sm-node sm-mvp">/search<br><small>店舗検索</small></div>
+          <div class="sm-arrow">→</div>
+          <div class="sm-node sm-mvp">/shops/:id<br><small>店舗詳細</small></div>
+          <div class="sm-arrow">→</div>
+          <div class="sm-node sm-ph2">/shops/:id/review<br><small>口コミ投稿</small></div>
+        </div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.2rem;">
+          <div class="sm-node sm-mvp">/mypage<br><small>マイページ</small></div>
+          <div style="display:flex;flex-direction:column;gap:0.3rem;margin-left:0.3rem;">
+            <div class="sm-node sm-user" style="font-size:0.72rem;padding:0.3rem 0.5rem;">フレンド管理</div>
+            <div class="sm-node sm-user" style="font-size:0.72rem;padding:0.3rem 0.5rem;">訪問履歴</div>
+            <div class="sm-node sm-user" style="font-size:0.72rem;padding:0.3rem 0.5rem;">通知設定</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.2rem;">
+          <div class="sm-node sm-ph2">/jobs<br><small>求人一覧</small></div>
+          <div class="sm-arrow">→</div>
+          <div class="sm-node sm-ph2">/jobs/:id<br><small>求人詳細・応募</small></div>
+        </div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.2rem;">
+          <div class="sm-node sm-store">/manage<br><small>店舗管理</small></div>
+          <div class="sm-node sm-ph2">/pricing<br><small>プラン比較</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sm-legend" style="margin-top:1rem;">
+    <div class="sm-legend-item"><div class="sm-dot" style="background:#1a1730;border:2px solid #c9aa6e;"></div> MVP（最優先）</div>
+    <div class="sm-legend-item"><div class="sm-dot" style="background:#f5f2eb;border:1px dashed #c9aa6e;"></div> Phase2</div>
+    <div class="sm-legend-item"><div class="sm-dot" style="background:#e8f5e9;border:1px solid #a5d6a7;"></div> ユーザー機能（マイページ配下）</div>
+    <div class="sm-legend-item"><div class="sm-dot" style="background:#e3f2fd;border:1px solid #90caf9;"></div> 店舗オーナー向け</div>
+  </div>
+  <p class="note" style="margin-top:0.75rem;">※チェックイン・フレンド機能は独立したページではなく、各ページに組み込まれる機能です（TOPページ、店舗詳細、マイページ等）。</p>
+
+  <h3 style="margin-top:1rem;">ページ一覧</h3>
   <table>
-    <tr><th>ページ</th><th>URL（案）</th><th>概要</th><th>主なユーザー</th><th>優先度</th></tr>
-    <tr><td>TOP（ホーム）</td><td><code>/</code></td><td>来店ユーザー向け体験を最優先。即時検索導線。チェックイン・フレンド通知表示</td><td>来店ユーザー</td><td>MVP</td></tr>
-    <tr><td>店舗検索</td><td><code>/search</code></td><td>エリア / タグ絞り込み一覧。GPS連動</td><td>来店ユーザー</td><td>MVP</td></tr>
-    <tr><td>店舗詳細</td><td><code>/shops/:id</code></td><td>写真・ママ紹介・料金・口コミ・CTA</td><td>来店ユーザー</td><td>MVP</td></tr>
-    <tr><td>チェックイン</td><td><code>/checkin</code></td><td>今いる店のチェックイン・フレンド通知</td><td>会員ユーザー</td><td>MVP</td></tr>
-    <tr><td>マイページ</td><td><code>/mypage</code></td><td>訪問履歴・お気に入り・フレンド管理・通知設定</td><td>来店ユーザー</td><td>MVP</td></tr>
-    <tr><td>店舗管理</td><td><code>/manage</code></td><td>情報編集・予約・求人管理</td><td>店舗オーナー</td><td>MVP</td></tr>
-    <tr><td>口コミ投稿</td><td><code>/shops/:id/review</code></td><td>来店証明コンテンツ</td><td>来店ユーザー</td><td>Phase2</td></tr>
-    <tr><td>求人一覧</td><td><code>/jobs</code></td><td>働き手向け求人検索</td><td>求職者</td><td>Phase2</td></tr>
-    <tr><td>求人詳細</td><td><code>/jobs/:id</code></td><td>求人詳細・応募フォーム</td><td>求職者</td><td>Phase2</td></tr>
-    <tr><td>プラン比較</td><td><code>/pricing</code></td><td>店舗向け3プラン・ユーザー向け2プラン比較</td><td>店舗オーナー</td><td>Phase2</td></tr>
+    <tr><th>ページ</th><th>URL</th><th>概要</th><th>主なユーザー</th><th>優先度</th></tr>
+    <tr><td>TOP</td><td><code>/</code></td><td>来店ユーザー向け体験を最優先。即時検索・フレンド動向表示</td><td>来店ユーザー</td><td><span class="badge done">MVP</span></td></tr>
+    <tr><td>店舗検索</td><td><code>/search</code></td><td>エリア / タグ絞り込み一覧。GPS連動</td><td>来店ユーザー</td><td><span class="badge done">MVP</span></td></tr>
+    <tr><td>店舗詳細</td><td><code>/shops/:id</code></td><td>写真・ママ紹介・料金・口コミ・CTA・チェックイン</td><td>来店ユーザー</td><td><span class="badge done">MVP</span></td></tr>
+    <tr><td>マイページ</td><td><code>/mypage</code></td><td>訪問履歴・お気に入り・フレンド管理・通知設定</td><td>会員ユーザー</td><td><span class="badge done">MVP</span></td></tr>
+    <tr><td>フレンド管理</td><td><code>/mypage/friends</code></td><td>フレンド一覧・申請管理・通知設定</td><td>会員ユーザー</td><td><span class="badge done">MVP</span></td></tr>
+    <tr><td>店舗管理</td><td><code>/manage</code></td><td>情報編集・予約・求人管理・CVレポート</td><td>店舗オーナー</td><td><span class="badge done">MVP</span></td></tr>
+    <tr><td>口コミ投稿</td><td><code>/shops/:id/review</code></td><td>来店証明コンテンツの蓄積</td><td>来店ユーザー</td><td><span class="badge todo">Phase2</span></td></tr>
+    <tr><td>求人一覧</td><td><code>/jobs</code></td><td>働き手向け求人検索</td><td>求職者</td><td><span class="badge todo">Phase2</span></td></tr>
+    <tr><td>求人詳細</td><td><code>/jobs/:id</code></td><td>求人詳細・応募フォーム</td><td>求職者</td><td><span class="badge todo">Phase2</span></td></tr>
+    <tr><td>プラン比較</td><td><code>/pricing</code></td><td>店舗向け3プラン・ユーザー向け2プラン比較</td><td>店舗・ユーザー</td><td><span class="badge todo">Phase2</span></td></tr>
   </table>
 </div>
 
-<!-- 06 各ページ詳細 -->
 <div class="sec" id="pages">
   <h2>06 各ページ詳細仕様 <span class="badge wip">作成中</span></h2>
 
-  <!-- TOP -->
   <h3>TOP（ホーム） <code>/</code> <span class="badge done" style="font-size:0.7rem;">MVP・最優先</span></h3>
   <h4>目的</h4>
   <p>「今夜、赤坂でスナックを探している人」が直感的に検索を始められること。ログイン会員にはフレンドのチェックイン情報も表示。</p>
+  <h4>グローバルナビゲーション（ヘッダー・常時表示）</h4>
+  <ul>
+    <li>ロゴ（クリックでTOPへ）</li>
+    <li>検索バー</li>
+    <li>ログイン / 会員登録ボタン（未ログイン時）／ マイページアイコン（ログイン時）</li>
+    <li>掲載依頼ボタン</li>
+    <li>ハンバーガーメニュー（右上：求人・プラン比較等を格納）</li>
+  </ul>
   <h4>主要エリア構成</h4>
   <ul>
-    <li><strong>ヒーローエリア：</strong>大型検索バー（エリア・キーワード）</li>
+    <li><strong>ヒーローエリア：</strong>大型検索バー（エリア・キーワード入力）</li>
     <li><strong>クイックフィルター：</strong>初めての方 / 一人飲み / カラオケあり / 女性歓迎</li>
-    <li><strong>今盛り上がってる店（リアルタイムランキング）：</strong>チェックイン数ベースのランキング表示（会員のチェックインにより動的更新）</li>
-    <li><strong>今夜行けるスナック：</strong>即時来店フラグ付き店舗</li>
-    <li><strong>フレンドの動向（ログイン時）：</strong>フレンドがチェックイン中の店舗をお知らせ</li>
-    <li><strong>プレミアム掲載店スポットライト：</strong>プレミアム店舗の優先表示</li>
+    <li><strong>今盛り上がってる店（リアルタイムランキング）：</strong>チェックイン数ベースのランキング表示。会員のチェックインにより動的更新</li>
+    <li><strong>今夜行けるスナック：</strong>即時来店フラグ付き店舗の一覧</li>
+    <li><strong>フレンドの動向（ログイン会員のみ表示）：</strong>フレンドが現在チェックイン中の店舗をお知らせ</li>
+    <li><strong>プレミアム掲載店スポットライト：</strong>プレミアムプラン店舗の優先表示</li>
     <li><strong>人気エリアリンク：</strong>赤坂見附・溜池山王</li>
   </ul>
-  <h4>グローバルナビゲーション（ヘッダー）</h4>
+  <h4>チェックイン機能（会員ログイン時）</h4>
   <ul>
-    <li>ロゴ（常時表示）</li>
-    <li>検索バー</li>
-    <li>ログイン / 会員登録</li>
-    <li>掲載依頼</li>
-    <li>ハンバーガーメニュー（右上）</li>
+    <li>TOPページまたは店舗詳細ページからワンタップでチェックイン実行</li>
+    <li>GPS位置情報と連動（任意）</li>
+    <li>チェックイン中は「今ここにいます」バッジを店舗ページに表示</li>
+    <li>フレンドに通知が届く（通知設定でON/OFF可能）</li>
+    <li>チェックアウトは手動 or 翌日自動解除</li>
+    <li>訪問履歴としてマイページに自動記録</li>
   </ul>
   <h4>CV導線</h4>
-  <p>検索実行 → 店舗詳細 → 電話 / SNS / 予約</p>
+  <p>検索実行 → 店舗詳細 → 電話 / SNS / 予約 / チェックイン</p>
 
-  <!-- 店舗検索 -->
   <h3>店舗検索（一覧） <code>/search</code> <span class="badge done" style="font-size:0.7rem;">MVP・最優先</span></h3>
   <h4>目的</h4>
   <p>ユーザーが条件を絞り込み、自分に合う店を発見する。</p>
@@ -206,11 +234,10 @@
     <li>今夜行けるフラグ</li>
   </ul>
   <h4>店舗カード</h4>
-  <p>写真・店名・エリア・料金目安・口コミ評価・タグ・今夜行けるバッジ</p>
+  <p>写真・店名・エリア・料金目安・口コミ評価・タグ・今夜行けるバッジ・現在のチェックイン人数バッジ</p>
   <h4>表示順</h4>
   <p>プレミアム上位固定 → スタンダード（マップピン）→ ベーシック</p>
 
-  <!-- 店舗詳細 -->
   <h3>店舗詳細 <code>/shops/:id</code> <span class="badge done" style="font-size:0.7rem;">MVP・最優先</span></h3>
   <h4>目的</h4>
   <p>安心して来店できるよう十分な情報を提供し、CTAへ繋げる。</p>
@@ -221,73 +248,62 @@
     <li>料金システム（セット料金 / チャージ / ボトルキープ）</li>
     <li>ママ紹介（写真＋コメント）※スタンダード以上</li>
     <li>タグ一覧（雰囲気・設備）</li>
+    <li>今チェックインしている会員数バッジ</li>
     <li>口コミ一覧・投稿フォーム</li>
     <li>類似店舗（横スライダー）</li>
     <li>求人情報（掲載している場合のみ）</li>
-    <li>今チェックインしている会員数（バッジ表示）</li>
   </ul>
-  <h4>CTA（固定）</h4>
-  <p>📞 電話する / 💬 SNSで問い合わせ / 📅 予約する / 📍 チェックイン（会員ログイン時）</p>
-
-  <!-- チェックイン -->
-  <h3>チェックイン機能 <code>/checkin</code> <span class="badge new" style="font-size:0.7rem;">v0.2追加・MVP</span></h3>
-  <h4>目的</h4>
-  <p>会員ログインしている人が、お店にいる間にチェックインを記録できる。フレンドへの通知トリガーとなる。</p>
-  <h4>機能仕様</h4>
+  <h4>CTA（固定ボタン）</h4>
   <ul>
-    <li>店舗詳細ページまたはTOPページからチェックイン実行</li>
-    <li>GPS位置情報と連動（任意）で正確性を担保</li>
-    <li>チェックイン中は「今ここにいます」バッジを店舗ページに表示</li>
-    <li>チェックアウトは手動 or 翌日自動解除</li>
-    <li>訪問履歴としてマイページに記録</li>
-  </ul>
-  <h4>フレンド通知</h4>
-  <ul>
-    <li>フレンドがチェックインすると通知が届く（設定でON/OFFを切り替え可能）</li>
-    <li>通知内容：「○○さんが△△スナックにチェックインしました」</li>
-    <li>TOPページにフレンドのチェックイン情報を表示</li>
+    <li>📞 <strong>電話する</strong>（常時表示）</li>
+    <li>💬 <strong>SNSで問い合わせ</strong>（登録済みSNSのみ表示）</li>
+    <li>📅 <strong>予約する</strong>（団体向け・予約URL登録時のみ）</li>
+    <li>📍 <strong>チェックイン</strong>（会員ログイン時のみ表示）</li>
   </ul>
 
-  <!-- フレンド機能 -->
-  <h3>フレンド機能 <span class="badge new" style="font-size:0.7rem;">v0.2追加・MVP</span></h3>
-  <h4>目的</h4>
-  <p>会員同士で繋がることができ、一緒に飲みに行くきっかけを提供する。</p>
-  <h4>機能仕様</h4>
-  <ul>
-    <li><strong>相互承認型：</strong>申請 → 相手が承認して初めてフレンド成立</li>
-    <li>フレンドのチェックイン状況をTOPページ・マイページで確認可能</li>
-    <li>チェックイン通知の受信はユーザーが個別設定可能（マイページの通知設定）</li>
-    <li>フレンド一覧・フレンド申請管理はマイページで管理</li>
-  </ul>
-
-  <!-- マイページ -->
   <h3>マイページ <code>/mypage</code> <span class="badge done" style="font-size:0.7rem;">MVP</span></h3>
   <h4>目的</h4>
   <p>会員ユーザーの活動履歴管理とフレンド・通知の設定拠点。</p>
   <h4>主要機能</h4>
   <ul>
-    <li>訪問履歴（チェックイン履歴）</li>
+    <li>訪問履歴（チェックイン履歴・訪問した店舗一覧）</li>
     <li>お気に入り店舗一覧</li>
-    <li>フレンド一覧・申請管理</li>
-    <li>通知設定（フレンドのチェックイン通知 ON/OFF）</li>
+    <li>フレンドの動向（現在チェックイン中のフレンドと店舗）</li>
     <li>会員プランの確認・変更</li>
     <li>プロフィール編集（ニックネーム・アイコン）</li>
   </ul>
 
-  <!-- 店舗管理 -->
+  <h3>フレンド管理 <code>/mypage/friends</code> <span class="badge done" style="font-size:0.7rem;">MVP</span> <span class="badge new" style="font-size:0.7rem;">新規追加</span></h3>
+  <h4>目的</h4>
+  <p>フレンド関係の管理と通知設定を一元管理する専用ページ。</p>
+  <h4>主要機能</h4>
+  <ul>
+    <li><strong>フレンド一覧：</strong>繋がっているフレンドの一覧表示・現在のチェックイン状況も表示</li>
+    <li><strong>フレンド申請管理：</strong>受信した申請への承認 / 拒否、送信した申請のキャンセル</li>
+    <li><strong>フレンド検索：</strong>ニックネームやIDで他の会員を検索して申請</li>
+    <li><strong>通知設定：</strong>フレンドがチェックインしたときの通知 ON/OFF を個別に設定可能</li>
+    <li><strong>フレンドの削除：</strong>フレンド関係の解除</li>
+  </ul>
+  <h4>フレンド機能の仕様</h4>
+  <ul>
+    <li><strong>相互承認型：</strong>申請 → 相手が承認して初めてフレンド成立</li>
+    <li>一方的なフォローは不可（SNSとは異なるクローズドな設計）</li>
+    <li>チェックイン通知は受信側が個別にON/OFF設定可能</li>
+    <li>通知内容：「○○さんが△△スナックにチェックインしました」</li>
+  </ul>
+
   <h3>店舗管理ダッシュボード <code>/manage</code> <span class="badge done" style="font-size:0.7rem;">MVP</span></h3>
   <h4>目的</h4>
   <p>店舗オーナーが掲載情報を管理し、集客効果を確認する。</p>
   <h4>機能一覧</h4>
   <ul>
-    <li>店舗情報編集（写真・基本情報・料金・SNS）</li>
-    <li>CVレポート（電話・SNSタップ数 ※スタンダード以上）</li>
+    <li>店舗情報編集（写真・基本情報・料金・SNSリンク・今夜行けるフラグ）</li>
+    <li>CVレポート（電話・SNSタップ数・MAP起動数 ※スタンダード以上）</li>
     <li>予約管理（団体予約の確認・承認 ※プレミアム）</li>
     <li>求人管理・応募者確認（※プレミアム）</li>
     <li>BIダッシュボード：売上・来客推移（※プレミアム）</li>
   </ul>
 
-  <!-- 口コミ投稿 -->
   <h3>口コミ投稿 <code>/shops/:id/review</code> <span class="badge todo" style="font-size:0.7rem;">Phase2</span></h3>
   <h4>目的</h4>
   <p>来店証明コンテンツを蓄積し、次のユーザーの意思決定を支援する。</p>
@@ -299,15 +315,13 @@
     <li>来店日・人数・利用シーン</li>
   </ul>
 
-  <!-- 求人 -->
   <h3>求人（一覧・詳細・応募） <code>/jobs</code> <span class="badge todo" style="font-size:0.7rem;">Phase2</span></h3>
   <h4>目的</h4>
   <p>スナックで働きたい人と店舗をマッチングする。</p>
   <h4>一覧の要素</h4>
   <p>店名・エリア・時給・シフト・応募条件・写真</p>
-  <p class="note">制限：プレミアムプランの店舗のみ掲載（検討中：論点A-3）</p>
+  <p class="note">プレミアムプランの店舗のみ掲載（検討中：論点A-3）</p>
 
-  <!-- プラン比較 -->
   <h3>プラン比較ページ <code>/pricing</code> <span class="badge todo" style="font-size:0.7rem;">Phase2</span></h3>
   <h4>目的</h4>
   <p>店舗オーナー・ユーザーが自分に合ったプランを選べるよう、機能・価格を明確に比較提示する。</p>
@@ -321,23 +335,21 @@
   </ul>
 </div>
 
-<!-- 07 CTA仕様 -->
 <div class="sec" id="cta">
   <h2>07 店舗詳細ページ CTA仕様 <span class="badge done">確定</span></h2>
-  <h4>CTAの種類（4種）</h4>
   <ul>
     <li>📞 <strong>電話する</strong> — 常時表示</li>
     <li>💬 <strong>SNSで問い合わせ</strong> — 登録済みのみ表示</li>
     <li>📅 <strong>予約する</strong> — 団体向け・URL登録時のみ</li>
-    <li>📍 <strong>チェックイン</strong> — 会員ログイン時のみ表示 <span class="badge new" style="font-size:0.7rem;">v0.2追加</span></li>
+    <li>📍 <strong>チェックイン</strong> — 会員ログイン時のみ <span class="badge new" style="font-size:0.7rem;">v0.2追加</span></li>
   </ul>
-  <p><strong>表示優先順位：</strong> ① 電話する（最優先・常時）→ ② SNS（display_order順）→ ③ 予約する（任意）→ ④ チェックイン（会員のみ）</p>
-  <p class="note">「予約する」の文言は一人客向け「空席確認する」、団体向け「席を確保する（2名以上）」への出し分けを検討中（論点C-3）。</p>
+  <p><strong>表示優先順位：</strong> ① 電話する → ② SNS（display_order順）→ ③ 予約する → ④ チェックイン</p>
+  <p class="note">「予約する」の文言出し分けを検討中（論点C-3）。</p>
 </div>
 
-<!-- 08 データ設計 -->
 <div class="sec" id="data">
-  <h2>08 データ設計 — SNSリンク <span class="badge done">確定</span></h2>
+  <h2>08 データ設計 <span class="badge done">確定</span></h2>
+  <h3>SNSリンク（shop_sns_links）</h3>
   <p><strong>リレーション：</strong> <code>shops</code> (1) — (多) <code>shop_sns_links</code></p>
   <table>
     <tr><th>カラム</th><th>型</th><th>説明</th></tr>
@@ -348,19 +360,16 @@
     <tr><td>display_order</td><td>int</td><td>店舗が表示順を制御</td></tr>
     <tr><td>is_active</td><td>boolean</td><td>一時非表示フラグ</td></tr>
   </table>
-  <p>platformごとにアイコン・ラベル・URLプレフィックスをフロント側で定義し自動レンダリング。</p>
-
-  <h3>チェックイン関連テーブル <span class="badge new">v0.2追加</span></h3>
+  <h3>チェックイン・フレンド関連 <span class="badge new">v0.2追加</span></h3>
   <table>
     <tr><th>テーブル</th><th>主なカラム</th><th>説明</th></tr>
     <tr><td>checkins</td><td>id, user_id, shop_id, checked_in_at, checked_out_at</td><td>チェックイン記録</td></tr>
     <tr><td>friendships</td><td>id, requester_id, receiver_id, status, created_at</td><td>フレンド関係（相互承認型）</td></tr>
     <tr><td>notifications</td><td>id, user_id, type, content, is_read, created_at</td><td>通知管理</td></tr>
-    <tr><td>notification_settings</td><td>user_id, friend_checkin_notify（boolean）</td><td>通知設定（フレンドチェックイン通知）</td></tr>
+    <tr><td>notification_settings</td><td>user_id, friend_checkin_notify（boolean）</td><td>通知ON/OFF設定</td></tr>
   </table>
 </div>
 
-<!-- 09 ブランド -->
 <div class="sec" id="brand">
   <h2>09 ロゴ・ブランド <span class="badge done">確定</span></h2>
   <table>
@@ -369,7 +378,7 @@
     <tr><td>日本語</td><td>スナログ / 明朝体 / weight 900 / 字間3 / 36px</td></tr>
     <tr><td>英語</td><td>snacklog / Georgia serif / weight 400 / 字間7 / 11px</td></tr>
     <tr><td>ライト背景</td><td>#f5f2eb</td></tr>
-    <tr><td>ゴールドL</td><td>#7a5508（シンボル・英語テキスト）</td></tr>
+    <tr><td>ゴールドL</td><td>#7a5508</td></tr>
     <tr><td>ゴールドD</td><td>#c9aa6e（ダーク背景時）</td></tr>
     <tr><td>テキスト</td><td>#1a1730</td></tr>
     <tr><td>ダーク背景</td><td>#131220</td></tr>
@@ -377,7 +386,6 @@
   </table>
 </div>
 
-<!-- 10 UI/UX -->
 <div class="sec" id="ux">
   <h2>10 UI / UX方針 <span class="badge done">確定</span></h2>
   <ul>
@@ -386,10 +394,9 @@
     <li>全国展開を前提とした拡張可能な構造</li>
     <li>店舗・求人向け入口はメニューに集約</li>
   </ul>
-  <p>初心者でも入れるよう、料金の透明性・写真・ママ紹介を前面に出す。「今夜行けるスナック」フラグで即時来店を促す。チェックイン・フレンド機能で「今夜誰かと飲みに行く」自然な動線を作る。</p>
+  <p>初心者でも入れるよう、料金の透明性・写真・ママ紹介を前面に出す。チェックイン・フレンド機能で「今夜誰かと飲みに行く」自然な動線を作る。</p>
 </div>
 
-<!-- 11 競合分析 -->
 <div class="sec" id="competitive">
   <h2>11 競合分析・差別化 <span class="badge done">確定</span></h2>
   <table>
@@ -400,10 +407,9 @@
     <tr><td>Googleマップ</td><td>口コミ中心で体系化されていない</td></tr>
     <tr><td>スナックナビ</td><td>月6万セッション・SNSとの体系化なし</td></tr>
   </table>
-  <p><strong>差別化の核：</strong> 「信頼性の高い情報 ＋ 来店きっかけの導線 ＋ 安心×雰囲気」＋ チェックイン・フレンド機能による「今夜一緒に飲みに行く」体験の創出。</p>
+  <p><strong>差別化の核：</strong> 「信頼性の高い情報 ＋ 来店きっかけの導線 ＋ チェックイン・フレンドによる"今夜一緒に飲みに行く"体験の創出」</p>
 </div>
 
-<!-- 12 未決事項 -->
 <div class="sec" id="todo">
   <h2>12 未決事項・TODO <span class="badge todo">対応待ち</span></h2>
   <table>
@@ -414,7 +420,8 @@
     <tr><td>店舗情報収集方法の検討（ゼンリン等）</td><td>Jさん</td><td><span class="badge todo">未着手</span></td></tr>
     <tr><td>予約CTA文言の最終決定</td><td>—</td><td><span class="badge todo">未着手</span></td></tr>
     <tr><td>チェックイン通知の詳細仕様（プッシュ通知 vs アプリ内通知）</td><td>りょうちゃん</td><td><span class="badge todo">未着手</span></td></tr>
-    <tr><td>ユーザー会員プレミアム（¥500/月）の訴求軸確定</td><td>—</td><td><span class="badge todo">未着手</span></td></tr>
+    <tr><td>ユーザープレミアム会員（¥500/月）の訴求軸確定</td><td>—</td><td><span class="badge todo">未着手</span></td></tr>
+    <tr><td>フレンド検索UIの設計（ニックネーム or QRコード等）</td><td>—</td><td><span class="badge todo">未着手</span></td></tr>
   </table>
 </div>
 
