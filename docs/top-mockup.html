@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スナログ — TOPページ サンプル</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;background:#f5f2eb;color:#1a1730;font-size:14px;}
+
+/* ========== HEADER ========== */
+.header{background:#131220;height:52px;display:flex;align-items:center;padding:0 20px;gap:12px;position:sticky;top:0;z-index:100;}
+.header-logo{display:flex;align-items:center;gap:8px;}
+.header-logo-text{color:#c9aa6e;font-size:18px;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;}
+.header-logo-en{color:#888;font-size:10px;font-family:Georgia,serif;letter-spacing:0.18em;}
+.header-search{flex:1;max-width:360px;margin:0 16px;}
+.header-search input{width:100%;height:32px;border-radius:6px;border:none;padding:0 12px;font-size:13px;background:#2d2856;color:#fff;outline:none;}
+.header-search input::placeholder{color:#888;}
+.header-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+.btn-sm{padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;border:1px solid #c9aa6e;color:#c9aa6e;background:transparent;}
+.btn-sm.primary{background:#c9aa6e;color:#131220;border-color:#c9aa6e;}
+.hamburger{display:flex;flex-direction:column;gap:4px;cursor:pointer;padding:4px;}
+.hamburger span{width:18px;height:2px;background:#888;border-radius:1px;}
+
+/* ========== HERO ========== */
+.hero{background:#131220;padding:40px 20px 48px;text-align:center;}
+.hero-tag{display:inline-block;background:#2d2856;color:#c9aa6e;font-size:11px;padding:4px 12px;border-radius:20px;margin-bottom:16px;letter-spacing:0.1em;}
+.hero-title{color:#f5f2eb;font-size:26px;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;line-height:1.4;margin-bottom:8px;}
+.hero-sub{color:#888;font-size:13px;margin-bottom:28px;}
+.search-box{background:#fff;border-radius:10px;padding:14px 16px;max-width:560px;margin:0 auto 20px;display:flex;align-items:center;gap:10px;}
+.search-box input{flex:1;border:none;outline:none;font-size:15px;color:#1a1730;}
+.search-box input::placeholder{color:#bbb;}
+.search-btn{background:#c9aa6e;color:#1a1730;border:none;border-radius:7px;padding:8px 20px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.quick-filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.qf{background:#2d2856;color:#c9aa6e;border:1px solid #3d3870;border-radius:20px;padding:6px 14px;font-size:12px;cursor:pointer;}
+
+/* ========== FRIEND NOTICE ========== */
+.friend-bar{background:#1e1c38;border-top:1px solid #2d2856;padding:10px 20px;display:flex;align-items:center;gap:10px;}
+.friend-bar-icon{width:32px;height:32px;border-radius:50%;background:#2d2856;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.friend-bar-text{color:#c9aa6e;font-size:12px;}
+.friend-bar-text strong{color:#fff;}
+.friend-bar-badge{background:#e53935;color:#fff;font-size:10px;border-radius:10px;padding:2px 7px;margin-left:auto;}
+
+/* ========== SECTION ========== */
+.section{padding:28px 20px;}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.section-title{font-size:16px;font-weight:700;color:#1a1730;display:flex;align-items:center;gap:8px;}
+.section-title .dot{width:8px;height:8px;border-radius:50%;background:#c9aa6e;}
+.section-link{font-size:12px;color:#7a5508;}
+
+/* ========== RANKING ========== */
+.ranking-list{display:flex;flex-direction:column;gap:10px;}
+.rank-card{background:#fff;border-radius:10px;border:1px solid #e8e2d8;display:flex;align-items:center;gap:12px;padding:12px;}
+.rank-num{font-size:20px;font-weight:900;color:#c9aa6e;min-width:28px;text-align:center;}
+.rank-num.top{color:#1a1730;}
+.rank-img{width:56px;height:56px;border-radius:8px;object-fit:cover;background:#2d2856;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.rank-img-placeholder{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,#2d2856 0%,#1a1730 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.rank-info{flex:1;min-width:0;}
+.rank-name{font-size:14px;font-weight:700;color:#1a1730;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rank-area{font-size:11px;color:#888;margin-bottom:4px;}
+.rank-tags{display:flex;gap:4px;flex-wrap:wrap;}
+.tag{font-size:10px;background:#f5f2eb;color:#7a5508;border:1px solid #e0d4be;border-radius:4px;padding:1px 6px;}
+.rank-checkin{text-align:right;flex-shrink:0;}
+.checkin-count{font-size:18px;font-weight:700;color:#c9aa6e;}
+.checkin-label{font-size:10px;color:#888;display:block;}
+.rank1-card{border:2px solid #c9aa6e;background:#fffdf8;}
+
+/* ========== SHOP CARDS ========== */
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.shop-card{background:#fff;border-radius:10px;border:1px solid #e8e2d8;overflow:hidden;}
+.shop-card-img{height:90px;background:#2d2856;display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;}
+.shop-card-badge{position:absolute;top:6px;left:6px;background:#e53935;color:#fff;font-size:9px;border-radius:4px;padding:2px 6px;}
+.shop-card-premium{position:absolute;top:6px;right:6px;background:#c9aa6e;color:#1a1730;font-size:9px;border-radius:4px;padding:2px 6px;font-weight:700;}
+.shop-card-body{padding:10px;}
+.shop-card-name{font-size:13px;font-weight:700;color:#1a1730;margin-bottom:2px;}
+.shop-card-area{font-size:11px;color:#888;margin-bottom:4px;}
+.shop-card-price{font-size:11px;color:#7a5508;font-weight:600;}
+.shop-card-tags{margin-top:5px;display:flex;gap:3px;flex-wrap:wrap;}
+
+/* ========== TONIGHT ========== */
+.tonight-card{background:#fff;border-radius:10px;border:1px solid #e8e2d8;display:flex;align-items:center;gap:12px;padding:12px;margin-bottom:10px;}
+.tonight-icon{width:44px;height:44px;border-radius:8px;background:#f5f2eb;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.tonight-info{flex:1;}
+.tonight-name{font-size:13px;font-weight:700;color:#1a1730;}
+.tonight-detail{font-size:11px;color:#888;margin-top:2px;}
+.tonight-cta{background:#131220;color:#c9aa6e;border:none;border-radius:6px;padding:7px 14px;font-size:11px;cursor:pointer;white-space:nowrap;}
+
+/* ========== AREA LINKS ========== */
+.area-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.area-card{background:#131220;border-radius:8px;padding:14px 10px;text-align:center;cursor:pointer;}
+.area-card-name{color:#c9aa6e;font-size:13px;font-weight:700;margin-bottom:2px;}
+.area-card-count{color:#888;font-size:10px;}
+
+/* ========== MYPAGE CHECKIN ========== */
+.mypage-bar{background:#fff;border:1px solid #e8e2d8;border-radius:10px;padding:12px 16px;margin:0 20px 24px;display:flex;align-items:center;gap:12px;}
+.mypage-avatar{width:36px;height:36px;border-radius:50%;background:#2d2856;display:flex;align-items:center;justify-content:center;color:#c9aa6e;font-size:14px;font-weight:700;flex-shrink:0;}
+.mypage-text{flex:1;font-size:12px;color:#888;}
+.mypage-text strong{color:#1a1730;font-size:13px;}
+.checkin-btn{background:#c9aa6e;color:#1a1730;border:none;border-radius:6px;padding:7px 14px;font-size:11px;font-weight:700;cursor:pointer;}
+
+/* ========== BOTTOM NAV ========== */
+.bottom-nav{background:#131220;height:56px;display:flex;align-items:center;justify-content:space-around;margin-top:8px;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;}
+.nav-item svg{width:20px;height:20px;}
+.nav-item span{font-size:9px;color:#888;}
+.nav-item.active span{color:#c9aa6e;}
+
+/* ========== ANNOTATION ========== */
+.anno-bar{background:#1a1730;padding:12px 20px;text-align:center;}
+.anno-bar p{color:#888;font-size:10px;line-height:1.6;}
+.anno-bar strong{color:#c9aa6e;}
+
+/* ========== DEVICE FRAME ========== */
+.device-frame{max-width:390px;margin:0 auto;background:#f5f2eb;min-height:100vh;position:relative;box-shadow:0 0 0 1px #e0d4be;}
+</style>
+</head>
+<body>
+<div style="background:#f0ede4;padding:16px 20px;text-align:center;border-bottom:1px solid #e0d9cc;">
+  <p style="font-size:11px;color:#7a5508;font-weight:700;">スナログ — TOPページ サンプル（スマホ幅 390px 想定）</p>
+  <p style="font-size:10px;color:#888;margin-top:2px;">仕様書 v0.2 に基づくイメージ。実際のデザインはUI確定後に変更あり。</p>
+</div>
+
+<div class="device-frame">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="32" height="32"><rect width="44" height="44" rx="10" fill="#1a1730"/><rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/><path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/><rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/></svg>
+      <div>
+        <div class="header-logo-text">スナログ</div>
+        <div class="header-logo-en">snacklog</div>
+      </div>
+    </div>
+    <div class="header-search">
+      <input type="text" placeholder="店名・エリアで検索">
+    </div>
+    <div class="header-right">
+      <button class="btn-sm">ログイン</button>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- ヒーローエリア -->
+  <div class="hero">
+    <div class="hero-tag">赤坂エリア特化</div>
+    <div class="hero-title">今夜のスナック、<br>ここから見つける。</div>
+    <div class="hero-sub">初心者歓迎・一人飲みOK・赤坂のスナック検索</div>
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="スナック名・エリア・キーワード">
+      <button class="search-btn">検索</button>
+    </div>
+    <div class="quick-filters">
+      <div class="qf">初めての方</div>
+      <div class="qf">一人飲み</div>
+      <div class="qf">カラオケあり</div>
+      <div class="qf">女性歓迎</div>
+    </div>
+  </div>
+
+  <!-- フレンドの動向（ログイン時） -->
+  <div class="friend-bar">
+    <div class="friend-bar-icon">👥</div>
+    <div class="friend-bar-text"><strong>田中さん</strong>が赤坂スナック花にチェックイン中</div>
+    <div class="friend-bar-badge">NEW</div>
+  </div>
+
+  <!-- ログイン会員向けチェックインバー -->
+  <div style="padding:16px 20px 0;">
+    <div class="mypage-bar">
+      <div class="mypage-avatar">M</div>
+      <div class="mypage-text"><strong>今夜のお店が決まったら</strong><br>チェックインで友達に知らせよう</div>
+      <button class="checkin-btn">チェックイン</button>
+    </div>
+  </div>
+
+  <!-- 今盛り上がってる店 ランキング -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">
+        <div class="dot"></div>
+        今盛り上がってる店
+        <span style="font-size:10px;background:#e53935;color:#fff;border-radius:4px;padding:1px 6px;">LIVE</span>
+      </div>
+      <div class="section-link">すべて見る →</div>
+    </div>
+    <div class="ranking-list">
+      <div class="rank-card rank1-card">
+        <div class="rank-num top">1</div>
+        <div class="rank-img-placeholder">🎤</div>
+        <div class="rank-info">
+          <div class="rank-name">スナック赤坂 花</div>
+          <div class="rank-area">赤坂見附 · カウンター8席</div>
+          <div class="rank-tags">
+            <span class="tag">初心者歓迎</span>
+            <span class="tag">カラオケ</span>
+            <span class="tag">女性歓迎</span>
+          </div>
+        </div>
+        <div class="rank-checkin">
+          <div class="checkin-count">12</div>
+          <span class="checkin-label">人チェックイン中</span>
+        </div>
+      </div>
+      <div class="rank-card">
+        <div class="rank-num">2</div>
+        <div class="rank-img-placeholder">🍸</div>
+        <div class="rank-info">
+          <div class="rank-name">Bar＆スナック ゆき</div>
+          <div class="rank-area">溜池山王 · カウンター10席</div>
+          <div class="rank-tags">
+            <span class="tag">一人歓迎</span>
+            <span class="tag">ボトルキープ</span>
+          </div>
+        </div>
+        <div class="rank-checkin">
+          <div class="checkin-count">8</div>
+          <span class="checkin-label">人チェックイン中</span>
+        </div>
+      </div>
+      <div class="rank-card">
+        <div class="rank-num">3</div>
+        <div class="rank-img-placeholder">🌸</div>
+        <div class="rank-info">
+          <div class="rank-name">スナック 夜桜</div>
+          <div class="rank-area">赤坂 · ボックス4名×2卓</div>
+          <div class="rank-tags">
+            <span class="tag">女性歓迎</span>
+            <span class="tag">カード可</span>
+          </div>
+        </div>
+        <div class="rank-checkin">
+          <div class="checkin-count">5</div>
+          <span class="checkin-label">人チェックイン中</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今夜行けるスナック -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-header">
+      <div class="section-title">
+        <div class="dot"></div>
+        今夜行けるスナック
+      </div>
+      <div class="section-link">すべて見る →</div>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <div class="shop-card-img">
+          🎵
+          <div class="shop-card-badge">今夜OK</div>
+          <div class="shop-card-premium">PREMIUM</div>
+        </div>
+        <div class="shop-card-body">
+          <div class="shop-card-name">スナック 月</div>
+          <div class="shop-card-area">赤坂見附</div>
+          <div class="shop-card-price">¥3,000〜/セット</div>
+          <div class="shop-card-tags">
+            <span class="tag">初心者</span><span class="tag">一人OK</span>
+          </div>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-card-img">
+          🌙
+          <div class="shop-card-badge">今夜OK</div>
+        </div>
+        <div class="shop-card-body">
+          <div class="shop-card-name">クラブ 星空</div>
+          <div class="shop-card-area">溜池山王</div>
+          <div class="shop-card-price">¥4,000〜/セット</div>
+          <div class="shop-card-tags">
+            <span class="tag">カラオケ</span>
+          </div>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-card-img">
+          🍷
+          <div class="shop-card-badge">今夜OK</div>
+          <div class="shop-card-premium">PREMIUM</div>
+        </div>
+        <div class="shop-card-body">
+          <div class="shop-card-name">Snack 銀河</div>
+          <div class="shop-card-area">赤坂</div>
+          <div class="shop-card-price">¥5,000〜/セット</div>
+          <div class="shop-card-tags">
+            <span class="tag">女性歓迎</span>
+          </div>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-card-img">
+          🎶
+          <div class="shop-card-badge">今夜OK</div>
+        </div>
+        <div class="shop-card-body">
+          <div class="shop-card-name">スナック 梅</div>
+          <div class="shop-card-area">赤坂見附</div>
+          <div class="shop-card-price">¥3,500〜/セット</div>
+          <div class="shop-card-tags">
+            <span class="tag">ボトル可</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- プレミアム掲載店スポットライト -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-header">
+      <div class="section-title">
+        <div class="dot"></div>
+        プレミアム掲載店
+      </div>
+      <div class="section-link">すべて見る →</div>
+    </div>
+    <div class="tonight-card">
+      <div class="tonight-icon">🏆</div>
+      <div class="tonight-info">
+        <div class="tonight-name">スナック 赤坂本店</div>
+        <div class="tonight-detail">赤坂見附 · カウンター12席 · ¥4,000〜 · カラオケ・女性歓迎</div>
+      </div>
+      <button class="tonight-cta">詳細を見る</button>
+    </div>
+    <div class="tonight-card">
+      <div class="tonight-icon">✨</div>
+      <div class="tonight-info">
+        <div class="tonight-name">Bar Snack KIRA</div>
+        <div class="tonight-detail">溜池山王 · ボックス4名×3卓 · ¥5,000〜 · ボトルキープ可</div>
+      </div>
+      <button class="tonight-cta">詳細を見る</button>
+    </div>
+  </div>
+
+  <!-- 人気エリアリンク -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-header">
+      <div class="section-title">
+        <div class="dot"></div>
+        エリアから探す
+      </div>
+    </div>
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-card-name">赤坂見附</div>
+        <div class="area-card-count">48店舗</div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-name">溜池山王</div>
+        <div class="area-card-count">32店舗</div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-name">赤坂</div>
+        <div class="area-card-count">67店舗</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 注釈バー -->
+  <div class="anno-bar">
+    <p><strong>このページはサンプルモックアップです</strong><br>
+    チェックイン数・店舗数・価格はすべてサンプルデータ。<br>
+    実データは開発フェーズで連携予定。</p>
+  </div>
+
+  <!-- ボトムナビ -->
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c9aa6e" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span style="color:#c9aa6e;">ホーム</span>
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span>検索</span>
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>チェックイン</span>
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>フレンド</span>
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>マイページ</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
