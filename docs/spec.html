@@ -247,12 +247,20 @@
     <li>写真ギャラリー（3枚 / 10枚 / 無制限＋動画：プランによる）</li>
     <li>基本情報（住所・営業時間・定休日・地図）</li>
     <li>料金システム（セット料金 / チャージ / ボトルキープ）</li>
+    <li>席数・レイアウト（カウンター○席 / ボックス席○名×○卓 / 総収容○名）</li>
     <li>ママ紹介（写真＋コメント）※スタンダード以上</li>
     <li>タグ一覧（雰囲気・設備）</li>
     <li>今チェックインしている会員数バッジ</li>
     <li>口コミ一覧・投稿フォーム</li>
     <li>類似店舗（横スライダー）</li>
     <li>求人情報（掲載している場合のみ）</li>
+  </ul>
+  <h4>席数・レイアウト表示</h4>
+  <ul>
+    <li>カウンター席・ボックス席・総収容人数をアイコン付きでコンパクトに表示</li>
+    <li>例：🪑 カウンター 8席　📦 ボックス 4名×2卓　👥 総収容 20名</li>
+    <li>貸切・団体利用の可否・条件もここに併記（入力があれば）</li>
+    <li>未入力の場合は非表示（必須項目ではない）</li>
   </ul>
   <h4>CTA（固定ボタン）</h4>
   <ul>
@@ -410,7 +418,18 @@
     <tr><td>display_order</td><td>int</td><td>店舗が表示順を制御</td></tr>
     <tr><td>is_active</td><td>boolean</td><td>一時非表示フラグ</td></tr>
   </table>
-  <h3>チェックイン・フレンド関連 <span class="badge new">v0.2追加</span></h3>
+  <h3>席数カラム（shopsテーブル追加）</h3>
+  <table>
+    <tr><th>カラム名</th><th>型</th><th>説明</th></tr>
+    <tr><td>counter_seats</td><td>TINYINT</td><td>カウンター席数（席）</td></tr>
+    <tr><td>box_seats_count</td><td>TINYINT</td><td>ボックス卓数（卓）</td></tr>
+    <tr><td>box_seats_capacity</td><td>TINYINT</td><td>ボックス1卓あたり定員（名）</td></tr>
+    <tr><td>box_seats</td><td>TINYINT</td><td>ボックス席総数 = 卓数×定員（自動計算）</td></tr>
+    <tr><td>total_capacity</td><td>TINYINT</td><td>総収容人数（名）</td></tr>
+    <tr><td>seats_note</td><td>VARCHAR(200)</td><td>席数・レイアウトの補足テキスト（貸切条件等）</td></tr>
+  </table>
+  <p class="note">席数情報は任意入力。未登録店舗には表示しない。入稿シートのQ〜V列に対応。</p>
+<h3>チェックイン・フレンド関連 <span class="badge new">v0.2追加</span></h3>
   <table>
     <tr><th>テーブル</th><th>主なカラム</th><th>説明</th></tr>
     <tr><td>checkins</td><td>id, user_id, shop_id, checked_in_at, checked_out_at</td><td>チェックイン記録</td></tr>
