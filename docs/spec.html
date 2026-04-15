@@ -181,6 +181,7 @@
     <tr><td>口コミ投稿</td><td><code>/shops/:id/review</code></td><td>来店証明コンテンツの蓄積</td><td>来店ユーザー</td><td><span class="badge todo">Phase2</span></td></tr>
     <tr><td>求人一覧</td><td><code>/jobs</code></td><td>働き手向け求人検索</td><td>求職者</td><td><span class="badge todo">Phase2</span></td></tr>
     <tr><td>求人詳細</td><td><code>/jobs/:id</code></td><td>求人詳細・応募フォーム</td><td>求職者</td><td><span class="badge todo">Phase2</span></td></tr>
+    <tr><td>事業承継・店舗買収相談</td><td><code>/ma</code></td><td>後継者不在オーナーと買い手のマッチング支援</td><td>店舗オーナー・買い手</td><td><span class="badge todo">Phase4</span></td></tr>
     <tr><td>プラン比較</td><td><code>/pricing</code></td><td>店舗向け3プラン・ユーザー向け2プラン比較</td><td>店舗・ユーザー</td><td><span class="badge todo">Phase2</span></td></tr>
   </table>
 </div>
@@ -304,7 +305,33 @@
     <li>BIダッシュボード：売上・来客推移（※プレミアム）</li>
   </ul>
 
-  <h3>口コミ投稿 <code>/shops/:id/review</code> <span class="badge todo" style="font-size:0.7rem;">Phase2</span></h3>
+  
+  <h3>事業承継・店舗買収相談 <code>/ma</code> <span class="badge todo" style="font-size:0.7rem;">Phase4</span> <span class="badge new" style="font-size:0.7rem;">新規追加</span></h3>
+  <h4>目的</h4>
+  <p>後継者不在や廃業を検討しているスナックオーナーと、店舗取得・開業を希望する買い手をマッチングする。スナックの検索・発見プラットフォームとしての信頼性・ネットワークを活かした事業承継支援サービス。</p>
+  <h4>背景・機会</h4>
+  <ul>
+    <li>スナック業界では後継者不在による廃業が増加しており、事業承継ニーズが高い</li>
+    <li>スナログが掲載する店舗オーナーとの信頼関係・データ（来客数・売上推移等）を活用可能</li>
+    <li>買い手（新規開業者・投資家）向けの物件情報・経営データ提供が差別化になる</li>
+  </ul>
+  <h4>主要機能</h4>
+  <ul>
+    <li><strong>売却相談フォーム：</strong>オーナーが売却・廃業・承継を相談できる窓口（プレミアムプラン店舗向け）</li>
+    <li><strong>買収物件一覧：</strong>条件・エリア・売上規模などで絞り込み検索（会員限定）</li>
+    <li><strong>マッチング仲介：</strong>スナログが間に入り、売り手・買い手の条件調整をサポート</li>
+    <li><strong>BI連携：</strong>プレミアムプランのBIダッシュボードデータを買収判断材料として提供</li>
+  </ul>
+  <h4>収益モデル</h4>
+  <ul>
+    <li>成功報酬型：マッチング成立1件につき¥1,000,000（試算用単価）</li>
+    <li>年10件成立目標（Phase4以降）→ 年間収益¥1,000万規模</li>
+    <li>相談登録・情報掲載は無料（成立時のみ課金）</li>
+  </ul>
+  <h4>法的考慮事項</h4>
+  <p>不動産仲介・M&A仲介に関する法規制の確認が必要。原田さんへの相談事項として論点リストに追記予定。</p>
+
+<h3>口コミ投稿 <code>/shops/:id/review</code> <span class="badge todo" style="font-size:0.7rem;">Phase2</span></h3>
   <h4>目的</h4>
   <p>来店証明コンテンツを蓄積し、次のユーザーの意思決定を支援する。</p>
   <h4>入力項目</h4>
