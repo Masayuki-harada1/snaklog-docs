@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>スナログ サイトマップ / ディレクトリマップ</title>
+<style>
+:root{--bg:#f5f2eb;--text:#1a1730;--gold:#c9aa6e;--gold-dark:#7a5508;--dark:#131220;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;font-size:13px;line-height:1.6;}
+header{background:var(--dark);padding:1rem 1.5rem;display:flex;align-items:center;gap:0;}
+nav{background:var(--dark);border-top:1px solid #2a2740;padding:0.4rem 1.5rem;display:flex;gap:1rem;flex-wrap:wrap;}
+nav a{color:#aaa;text-decoration:none;font-size:0.78rem;}nav a:hover{color:var(--gold);}
+main{max-width:1100px;margin:0 auto;padding:1.5rem;}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;background:white;padding:0.75rem 1rem;border-radius:8px;border:1px solid #e0d9cc;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:0.75rem;}
+.legend-dot{width:10px;height:10px;border-radius:2px;}
+.sec{background:white;border-radius:10px;border:1px solid #e0d9cc;margin-bottom:1.5rem;overflow:hidden;}
+.sec-head{background:var(--dark);padding:0.75rem 1.25rem;display:flex;align-items:center;gap:10px;}
+.sec-head h2{color:var(--gold);font-size:0.95rem;font-weight:700;}
+.sec-head .sec-desc{color:#888;font-size:0.78rem;margin-left:auto;}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+th{background:#f5f2eb;color:#7a5508;padding:7px 12px;text-align:left;font-weight:600;border-bottom:1px solid #e0d9cc;}
+td{padding:8px 12px;border-bottom:1px solid #f5f2eb;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#faf8f3;}
+.url{font-family:monospace;font-size:0.78rem;color:#2d2856;background:#f0ede4;padding:1px 5px;border-radius:3px;}
+.phase{display:inline-block;padding:2px 7px;border-radius:4px;font-size:0.72rem;white-space:nowrap;}
+.mvp{background:#e8f5e9;color:#2e7d32;}
+.ph2{background:#f5f2eb;color:#7a5508;border:1px dashed #c9aa6e;}
+.ph4{background:#e3f2fd;color:#1565c0;}
+.user-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.7rem;margin:1px;white-space:nowrap;}
+.ut-user{background:#e8f5e9;color:#2e7d32;}
+.ut-store{background:#e3f2fd;color:#1565c0;}
+.ut-job{background:#fce4d6;color:#bf360c;}
+.ut-all{background:#f5f2eb;color:#555;}
+.feat{font-size:0.75rem;color:#444;line-height:1.6;}
+.feat li{margin:1px 0;}
+.plan-tag{display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.68rem;margin:1px;}
+.plan-basic{background:#f5f5f5;color:#666;}
+.plan-std{background:#fff3e0;color:#e65100;}
+.plan-prem{background:#fce4e4;color:#c62828;}
+.plan-free{background:#e8f5e9;color:#2e7d32;}
+.indent{padding-left:20px;color:#888;}
+footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" style="color:#888;text-decoration:none;font-size:0.8rem;white-space:nowrap;margin-right:12px;">← 一覧へ</a>
+  <div style="display:flex;align-items:center;gap:10px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" style="flex-shrink:0"><rect width="44" height="44" rx="10" fill="#1a1730"/><rect x="19" y="8" width="6" height="16" rx="3" fill="#c9aa6e"/><path d="M13 20 Q13 30 22 30 Q31 30 31 20" stroke="#c9aa6e" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="20.5" y="30" width="3" height="5" fill="#c9aa6e" rx="1"/><rect x="16" y="35" width="12" height="2.5" fill="#c9aa6e" rx="1.25"/></svg><div><div style="color:#c9aa6e;font-size:1.15rem;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-weight:900;letter-spacing:0.05em;line-height:1;">スナログ</div><div style="color:#888;font-size:0.68rem;font-family:Georgia,serif;letter-spacing:0.15em;margin-top:2px;">snacklog</div></div></div>
+  <span style="color:#666;font-size:0.78rem;margin-left:auto;">サイトマップ / ディレクトリマップ v0.2</span>
+</header>
+<nav>
+  <a href="#user">来店ユーザー向け</a>
+  <a href="#member">会員機能</a>
+  <a href="#store">店舗オーナー向け</a>
+  <a href="#job">求人・働き手向け</a>
+  <a href="#future">将来機能</a>
+  <a href="#auth">認証・共通</a>
+</nav>
+<main>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#2e7d32;"></div> MVP（最優先）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#7a5508;border:1px dashed #c9aa6e;"></div> Phase2</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1565c0;"></div> Phase4以降</div>
+  <div class="legend-item" style="margin-left:1rem;"><div class="legend-dot" style="background:#e8f5e9;border:1px solid #2e7d32;"></div> 来店ユーザー</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e3f2fd;border:1px solid #1565c0;"></div> 店舗オーナー</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fce4d6;border:1px solid #bf360c;"></div> 求職者</div>
+  <div class="legend-item" style="margin-left:1rem;"><span class="plan-basic">基本</span>= ベーシック　<span class="plan-std">標準</span>= スタンダード　<span class="plan-prem">上位</span>= プレミアム</div>
+</div>
+
+<!-- 来店ユーザー向け -->
+<div class="sec" id="user">
+  <div class="sec-head"><h2>来店ユーザー向けページ</h2><div class="sec-desc">スナックを探す人が使うページ群</div></div>
+  <table>
+    <tr><th style="width:18%">ページ名</th><th style="width:15%">URL</th><th style="width:8%">フェーズ</th><th style="width:10%">対象</th><th>実装機能</th></tr>
+    <tr>
+      <td><strong>TOP / ホーム</strong></td>
+      <td><span class="url">/</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-all">全員</span></td>
+      <td><ul class="feat">
+        <li>大型検索バー（エリア・キーワード）</li>
+        <li>クイックフィルター（初めての方/一人飲み/カラオケあり/女性歓迎）</li>
+        <li>今盛り上がってる店ランキング（チェックイン数・リアルタイム）</li>
+        <li>今夜行けるスナック一覧（即時来店フラグ付き）</li>
+        <li><strong>フレンドの動向</strong>（ログイン会員のみ）：フレンドのチェックイン先を表示</li>
+        <li>チェックイン誘導バー（会員ログイン時）</li>
+        <li>プレミアム掲載店スポットライト</li>
+        <li>人気エリアリンク（赤坂見附・溜池山王・赤坂）</li>
+        <li>グローバルナビ：ロゴ / 検索 / ログイン / 掲載依頼 / ハンバーガーメニュー</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>店舗検索（一覧）</strong></td>
+      <td><span class="url">/search</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-user">来店ユーザー</span></td>
+      <td><ul class="feat">
+        <li>絞り込み条件：エリア / GPS周辺 / 予算 / 設備タグ / 雰囲気タグ / 今夜行けるフラグ</li>
+        <li>歓迎フラグ絞り込み：お一人様 / 女性のみ / 団体</li>
+        <li>店舗カード：写真・店名・エリア・料金目安・口コミ評価・タグ・チェックイン人数バッジ</li>
+        <li>表示順：プレミアム上位固定 → スタンダード（マップピン付）→ ベーシック</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>店舗詳細</strong></td>
+      <td><span class="url">/shops/:id</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-user">来店ユーザー</span></td>
+      <td><ul class="feat">
+        <li>写真ギャラリー：<span class="plan-basic">3枚</span> <span class="plan-std">10枚</span> <span class="plan-prem">無制限+動画</span></li>
+        <li>基本情報：住所・営業時間・定休日・地図（Googleマップ連携）</li>
+        <li>料金システム：セット料金 / チャージ / ボトルキープ</li>
+        <li>席数・レイアウト：カウンター○席 / ボックス○名×○卓 / 総収容○名</li>
+        <li>歓迎フラグ表示：お一人様 / 女性のみ / 団体</li>
+        <li>ママ紹介：写真＋コメント <span class="plan-std">スタンダード以上</span></li>
+        <li>タグ一覧：雰囲気・設備</li>
+        <li>今チェックインしている会員数バッジ</li>
+        <li>口コミ一覧・投稿フォーム</li>
+        <li>類似店舗（横スライダー）</li>
+        <li>OGP / 構造化データ（schema.org/LocalBusiness）</li>
+        <li><strong>CTA固定ボタン：</strong>📞 電話 / 💬 SNS問い合わせ / 📅 予約 / 📍 チェックイン（会員のみ）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>口コミ投稿</strong></td>
+      <td><span class="url">/shops/:id/review</span></td>
+      <td><span class="phase ph2">Phase2</span></td>
+      <td><span class="user-tag ut-user">来店ユーザー</span></td>
+      <td><ul class="feat">
+        <li>総合評価（★1〜5）/ 雰囲気・料金・ママ対応（各★）</li>
+        <li>テキストコメント（任意）/ 来店日・人数・利用シーン</li>
+        <li>投稿前モデレーション（Phase2：AIフィルタリング）</li>
+      </ul></td>
+    </tr>
+  </table>
+</div>
+
+<!-- 会員機能 -->
+<div class="sec" id="member">
+  <div class="sec-head"><h2>会員機能ページ（ログイン必須）</h2><div class="sec-desc">登録会員が使うページ群</div></div>
+  <table>
+    <tr><th style="width:18%">ページ名</th><th style="width:15%">URL</th><th style="width:8%">フェーズ</th><th style="width:10%">対象</th><th>実装機能</th></tr>
+    <tr>
+      <td><strong>マイページ</strong></td>
+      <td><span class="url">/mypage</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-user">会員ユーザー</span></td>
+      <td><ul class="feat">
+        <li>訪問履歴（チェックイン履歴・訪問した店舗一覧）</li>
+        <li>お気に入り店舗一覧</li>
+        <li>フレンドの動向（現在チェックイン中のフレンドと店舗）</li>
+        <li><strong>ボトルキープ一覧</strong>：紐づいている店舗・銘柄・残量・期限を表示</li>
+        <li>会員プランの確認・変更（ベーシック / プレミアム）</li>
+        <li>プロフィール編集（ニックネーム・アイコン）</li>
+        <li>チェックイン情報の公開範囲設定（フレンドのみ / 非公開）</li>
+        <li>通知設定（フレンドのチェックイン通知 ON/OFF）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>フレンド管理</strong></td>
+      <td><span class="url">/mypage/friends</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-user">会員ユーザー</span></td>
+      <td><ul class="feat">
+        <li>フレンド一覧：チェックイン状況リアルタイム表示</li>
+        <li>フレンド申請管理（承認 / 拒否 / キャンセル）</li>
+        <li>フレンド検索（ニックネーム or ID）</li>
+        <li>通知設定（フレンド別にON/OFF）</li>
+        <li>フレンド削除（相互承認型）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>チェックイン</strong></td>
+      <td><span class="url">（店舗詳細/TOPに組み込み）</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-user">会員ユーザー</span></td>
+      <td><ul class="feat">
+        <li>ワンタップでチェックイン実行（GPS連動・任意）</li>
+        <li>チェックイン中バッジを店舗ページに表示</li>
+        <li>フレンドへ通知（通知設定でON/OFF可）</li>
+        <li>チェックアウト：手動 or 翌日自動解除</li>
+        <li>訪問履歴としてマイページに自動記録</li>
+        <li><strong>チェックインでスナログポイント付与</strong>（将来実装）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>プラン比較</strong><br><span class="indent">（ユーザー向け）</span></td>
+      <td><span class="url">/pricing#user</span></td>
+      <td><span class="phase ph2">Phase2</span></td>
+      <td><span class="user-tag ut-user">会員ユーザー</span></td>
+      <td><ul class="feat">
+        <li>ベーシック会員（無料）vs プレミアム会員（¥500/月）の比較表</li>
+        <li>プレミアム限定クーポン / 広告非表示</li>
+        <li>スナログポイント優遇（将来）</li>
+      </ul></td>
+    </tr>
+  </table>
+</div>
+
+<!-- 店舗オーナー向け -->
+<div class="sec" id="store">
+  <div class="sec-head"><h2>店舗オーナー向けページ</h2><div class="sec-desc">掲載店舗のオーナー・ママが使うページ群</div></div>
+  <table>
+    <tr><th style="width:18%">ページ名</th><th style="width:15%">URL</th><th style="width:8%">フェーズ</th><th style="width:10%">対象</th><th>実装機能</th></tr>
+    <tr>
+      <td><strong>店舗管理<br>ダッシュボード</strong></td>
+      <td><span class="url">/manage</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-store">店舗オーナー</span></td>
+      <td><ul class="feat">
+        <li>店舗情報編集：写真・基本情報・料金・SNSリンク・席数・今夜行けるフラグ・歓迎フラグ</li>
+        <li>CVレポート：電話・SNSタップ数・MAP起動数 <span class="plan-std">スタンダード以上</span></li>
+        <li>BIダッシュボード：売上・来客推移 <span class="plan-std">スタンダード以上</span></li>
+        <li>マップピン表示設定 <span class="plan-std">スタンダード以上</span></li>
+        <li>ママ紹介編集 <span class="plan-std">スタンダード以上</span></li>
+        <li>フレンド管理：来店歴のある会員の管理・グルーピング <span class="plan-std">スタンダード以上</span></li>
+        <li>プッシュ通知送信：会員へのお知らせ配信 <span class="plan-std">スタンダード以上</span></li>
+        <li>ボトルキープ管理：登録名・銘柄・期限・残量・通知送信 <span class="plan-std">スタンダード以上</span></li>
+        <li>予約管理：団体予約の確認・承認 <span class="plan-prem">プレミアム</span></li>
+        <li>求人管理・応募者確認 <span class="plan-prem">プレミアム</span></li>
+        <li>顧客管理：グループ別メッセージ送信 <span class="plan-prem">プレミアム</span></li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>掲載申請</strong></td>
+      <td><span class="url">/apply</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><span class="user-tag ut-store">店舗オーナー</span></td>
+      <td><ul class="feat">
+        <li>基本情報・連絡先の入力フォーム</li>
+        <li>Phase1：運営が電話で本人確認（手動審査・3営業日以内）</li>
+        <li>Phase2以降：Google Business Profile連携で審査省略 / SMS認証</li>
+        <li>承認後に/manageへのアクセス権付与</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>プラン比較</strong><br><span class="indent">（店舗向け）</span></td>
+      <td><span class="url">/pricing#store</span></td>
+      <td><span class="phase ph2">Phase2</span></td>
+      <td><span class="user-tag ut-store">店舗オーナー</span></td>
+      <td><ul class="feat">
+        <li>ベーシック / スタンダード / プレミアムの3プラン横並び比較</li>
+        <li>機能マトリクス（● / — 一覧）</li>
+        <li>各プランCTAボタン / FAQ</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>事業承継・<br>店舗買収相談</strong></td>
+      <td><span class="url">/ma</span></td>
+      <td><span class="phase ph4">Phase4</span></td>
+      <td><span class="user-tag ut-store">店舗オーナー</span></td>
+      <td><ul class="feat">
+        <li>売却・廃業・承継の相談フォーム（プレミアム店舗向け）</li>
+        <li>買収物件一覧（条件・エリア・売上規模で絞り込み）</li>
+        <li>マッチング仲介：スナログが売り手・買い手を調整</li>
+        <li>BI連携：BIダッシュボードデータを買収判断材料として提供</li>
+        <li>成功報酬型：成立1件 ¥1,000,000</li>
+      </ul></td>
+    </tr>
+  </table>
+</div>
+
+<!-- 求人・働き手向け -->
+<div class="sec" id="job">
+  <div class="sec-head"><h2>求人・働き手向けページ</h2><div class="sec-desc">スナックで働きたい人向けのページ群（Phase2）</div></div>
+  <table>
+    <tr><th style="width:18%">ページ名</th><th style="width:15%">URL</th><th style="width:8%">フェーズ</th><th style="width:10%">対象</th><th>実装機能</th></tr>
+    <tr>
+      <td><strong>求人一覧</strong></td>
+      <td><span class="url">/jobs</span></td>
+      <td><span class="phase ph2">Phase2</span></td>
+      <td><span class="user-tag ut-job">求職者</span></td>
+      <td><ul class="feat">
+        <li>店名・エリア・時給・シフト・応募条件・写真</li>
+        <li>プレミアムプランの店舗のみ掲載（論点A-3参照）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>求人詳細・応募</strong></td>
+      <td><span class="url">/jobs/:id</span></td>
+      <td><span class="phase ph2">Phase2</span></td>
+      <td><span class="user-tag ut-job">求職者</span></td>
+      <td><ul class="feat">
+        <li>求人詳細情報 / 応募フォーム</li>
+        <li>店舗ページへのリンク</li>
+      </ul></td>
+    </tr>
+  </table>
+</div>
+
+<!-- 将来機能 -->
+<div class="sec" id="future">
+  <div class="sec-head"><h2>将来実装予定機能（後続ローンチ）</h2><div class="sec-desc">確定後に仕様を詳細化</div></div>
+  <table>
+    <tr><th style="width:22%">機能名</th><th style="width:15%">URL（案）</th><th style="width:10%">フェーズ</th><th>概要</th></tr>
+    <tr>
+      <td><strong>スマート会計機能</strong></td>
+      <td><span class="url">/checkout</span></td>
+      <td><span class="phase ph4">後続ローンチ</span></td>
+      <td>サイト上でその場の飲食代金の支払いまで完結できる決済機能。会計時に会員がスキャン or QRコードで支払い。</td>
+    </tr>
+    <tr>
+      <td><strong>スナログポイント・投げ銭</strong></td>
+      <td><span class="url">/point</span></td>
+      <td><span class="phase ph4">後続ローンチ</span></td>
+      <td>チェックインでスナログポイント付与。ポイントはクレジットカードでも購入可能。蓄積したポイントを使って好きなスナックへ「投げ銭」ができる。</td>
+    </tr>
+    <tr>
+      <td><strong>多言語対応（インバウンド）</strong></td>
+      <td><span class="url">全ページ</span></td>
+      <td><span class="phase ph4">将来検討</span></td>
+      <td>英語・中国語・韓国語への多言語対応。外国人向け「スナック体験ガイド」コンテンツの展開も視野に（論点G-1）。</td>
+    </tr>
+    <tr>
+      <td><strong>M&Aマッチング</strong></td>
+      <td><span class="url">/ma</span></td>
+      <td><span class="phase ph4">Phase4</span></td>
+      <td>事業承継・店舗買収の相談窓口。成功報酬型（¥1,000,000/件）。</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 認証・共通 -->
+<div class="sec" id="auth">
+  <div class="sec-head"><h2>認証・共通ページ</h2><div class="sec-desc">全ユーザー共通のシステムページ</div></div>
+  <table>
+    <tr><th style="width:18%">ページ名</th><th style="width:15%">URL</th><th style="width:8%">フェーズ</th><th>実装機能</th></tr>
+    <tr>
+      <td><strong>会員登録</strong></td>
+      <td><span class="url">/register</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><ul class="feat">
+        <li>メール＋パスワード登録 / Google OAuth（MVP）</li>
+        <li>メール認証（登録後に確認メール送信）</li>
+        <li>LINE認証（Phase2）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>ログイン</strong></td>
+      <td><span class="url">/login</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><ul class="feat">
+        <li>メール/パスワード / Google / LINE（Phase2）</li>
+        <li>セッション維持（JWTトークン・30日）</li>
+        <li>パスワードリセット（メール送信・24時間有効）</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>アカウント設定・退会</strong></td>
+      <td><span class="url">/mypage/settings</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><ul class="feat">
+        <li>プロフィール編集 / パスワード変更</li>
+        <li>通知設定（フレンドチェックイン通知・メール通知）</li>
+        <li>公開範囲設定（チェックイン情報：フレンドのみ / 非公開）</li>
+        <li>退会フロー：確認画面 → 30日間データ保持 → 完全削除</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>404 / エラーページ</strong></td>
+      <td><span class="url">/404</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><ul class="feat"><li>404 Not Found / 500 Server Error の専用ページ</li></ul></td>
+    </tr>
+    <tr>
+      <td><strong>利用規約・<br>プライバシーポリシー</strong></td>
+      <td><span class="url">/terms<br>/privacy</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><ul class="feat">
+        <li>利用規約（掲載・口コミ・風営法対応）</li>
+        <li>プライバシーポリシー（個人情報保護法・GDPR将来対応）</li>
+        <li>法的整理：原田さん確認後に確定</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td><strong>サイトマップ（SEO）</strong></td>
+      <td><span class="url">/sitemap.xml</span></td>
+      <td><span class="phase mvp">MVP</span></td>
+      <td><ul class="feat">
+        <li>自動生成・定期更新</li>
+        <li>robots.txt：マイページ・管理画面をクロール除外</li>
+      </ul></td>
+    </tr>
+  </table>
+</div>
+
+</main>
+<footer>スナログ プロジェクトドキュメント | v0.2 | 最終更新: 2026-04-17</footer>
+</body></html>
