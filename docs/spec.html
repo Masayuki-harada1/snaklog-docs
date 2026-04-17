@@ -151,22 +151,38 @@
 <div class="sec" id="business">
   <h2>03 ビジネスモデル・収益設計 <span class="badge wip">ブラッシュアップ中</span></h2>
   <h3>店舗向けプラン（上位プランは下位の全機能を含む）</h3>
+  <p class="note">⚠️ プラン価格は未確定。以下の機能配分は仕様確定後に更新予定。</p>
   <table>
-    <tr><th>機能</th><th class="center">ベーシック<br><small>無料〜数千円/月</small></th><th class="center">スタンダード<br><small>¥9,800〜/月</small></th><th class="center">プレミアム<br><small>¥29,800〜/月</small></th></tr>
+    <tr>
+      <th>機能</th>
+      <th class="center">ベーシック<br><small>無料〜数千円/月</small></th>
+      <th class="center">スタンダード<br><small>¥9,800〜/月（無料）</small></th>
+      <th class="center">プレミアム<br><small>¥29,800〜/月</small></th>
+    </tr>
     <tr><td>基本掲載（住所・営業時間・電話）</td><td class="center check-yes">●</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>SNSリンク（LINE/Instagram/X等）</td><td class="center check-yes">●</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>写真掲載</td><td class="center">3枚</td><td class="center">10枚</td><td class="center">無制限＋動画</td></tr>
     <tr><td>口コミ表示</td><td class="center check-yes">●</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
-    <tr><td>ママ紹介（写真＋コメント）</td><td class="center check-no">—</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
-    <tr><td>マップピン表示</td><td class="center check-no">—</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
+    <tr><td>ママ紹介（写真＋コメント）</td><td class="center check-no">—</td><td class="center check-yes">● <span class="badge new" style="font-size:0.68rem;">追加</span></td><td class="center check-yes">●</td></tr>
+    <tr><td>マップピン表示</td><td class="center check-no">—</td><td class="center check-yes">● <span class="badge new" style="font-size:0.68rem;">追加</span></td><td class="center check-yes">●</td></tr>
     <tr><td>クーポン機能</td><td class="center check-no">—</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>CVレポート（電話・SNSタップ数）</td><td class="center check-no">—</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
+    <tr><td>BIダッシュボード（売上・来客推移）</td><td class="center check-no">—</td><td class="center check-yes">● <span class="badge new" style="font-size:0.68rem;">追加</span></td><td class="center check-yes">●</td></tr>
+    <tr><td>店舗からのプッシュ通知</td><td class="center check-no">—</td><td class="center check-yes">● <span class="badge new" style="font-size:0.68rem;">追加</span></td><td class="center check-yes">●</td></tr>
+    <tr><td>フレンド管理（来店歴ユーザーの管理）</td><td class="center check-no">—</td><td class="center check-yes">● <span class="badge new" style="font-size:0.68rem;">追加</span></td><td class="center check-yes">●</td></tr>
+    <tr><td>ボトルキープ管理（マイページ連携）</td><td class="center check-no">—</td><td class="center check-yes">●</td><td class="center check-yes">●</td></tr>
     <tr><td>上位固定表示</td><td class="center check-no">—</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
     <tr><td>予約機能（団体向け）</td><td class="center check-no">—</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
     <tr><td>求人掲載</td><td class="center check-no">—</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
-    <tr><td>BIダッシュボード（売上・来客推移）</td><td class="center check-no">—</td><td class="center check-no">—</td><td class="center check-yes">●</td></tr>
+    <tr><td>顧客管理機能（グルーピング・グループメッセ送信）</td><td class="center check-no">—</td><td class="center check-no">—</td><td class="center check-yes">● <span class="badge new" style="font-size:0.68rem;">追加</span></td></tr>
   </table>
-  <p class="note">価格・機能詳細はビジネスモデルBU後に確定。検討論点リスト A-1〜A-4 参照。</p>
+  <p class="note">スタンダードプランは「無料」での提供を検討中（論点A-2参照）。価格・機能詳細は確定後に更新。</p>
+  <div style="background:#e3f2fd;border-left:3px solid #1565c0;border-radius:0 6px 6px 0;padding:0.6rem 0.8rem;margin-top:0.5rem;font-size:0.82rem;color:#1565c0;">
+    <strong>将来実装予定機能（後続ローンチ）</strong><br>
+    ・スマート会計機能：サイト上で支払いまで完了できる決済機能<br>
+    ・投げ銭機能：スナログポイント（クレジットカードで購入）を使った投げ銭<br>
+    ・スナログポイント：チェックインでポイント付与
+  </div>
   <h3>ユーザー向け会員プラン（上位プランは下位の全機能を含む） <span class="badge new">v0.2追加</span></h3>
   <table>
     <tr><th>機能</th><th class="center">ベーシック会員<br><small>無料</small></th><th class="center">プレミアム会員<br><small>¥500/月</small></th></tr>
@@ -441,10 +457,13 @@
   <h4>機能一覧</h4>
   <ul>
     <li>店舗情報編集（写真・基本情報・料金・SNSリンク・今夜行けるフラグ）</li>
-    <li>CVレポート（電話・SNSタップ数・MAP起動数 ※スタンダード以上）</li>
+    <li>CVレポート（電話・SNSタップ数・MAP起動数）</li>
     <li>予約管理（団体予約の確認・承認 ※プレミアム）</li>
     <li>求人管理・応募者確認（※プレミアム）</li>
-    <li>BIダッシュボード：売上・来客推移（※プレミアム）</li>
+    <li>BIダッシュボード：売上・来客推移（スタンダード以上）</li>
+    <li>顧客管理（プレミアム）：来店歴のあるフレンドのグルーピング・グループ別メッセージ送信</li>
+    <li>ボトルキープ管理：登録名・銘柄・期限・残量の管理 → 会員マイページと連携</li>
+    <li>プッシュ通知送信（スタンダード以上）：チェックイン会員や既存顧客への通知配信</li>
   </ul>
 
   
@@ -570,6 +589,20 @@
     <tr><td>seats_note</td><td>VARCHAR(200)</td><td>席数・レイアウトの補足テキスト（貸切条件等）</td></tr>
   </table>
   <p class="note">席数情報は任意入力。未登録店舗には表示しない。入稿シートのQ〜V列に対応。</p>
+<h3>ボトルキープ管理（shop_bottle_keeps）</h3>
+  <table>
+    <tr><th>カラム</th><th>型</th><th>説明</th></tr>
+    <tr><td>id</td><td>BIGINT PK</td><td>自動採番</td></tr>
+    <tr><td>shop_id</td><td>BIGINT FK</td><td>店舗ID</td></tr>
+    <tr><td>user_id</td><td>BIGINT FK</td><td>ユーザーID（マイページ連携用・任意）</td></tr>
+    <tr><td>customer_name</td><td>VARCHAR(50)</td><td>登録名（ニックネーム可）</td></tr>
+    <tr><td>bottle_name</td><td>VARCHAR(100)</td><td>銘柄・ボトル名</td></tr>
+    <tr><td>keep_start_date</td><td>DATE</td><td>キープ開始日</td></tr>
+    <tr><td>keep_expiry_date</td><td>DATE</td><td>キープ期限</td></tr>
+    <tr><td>remaining_amount</td><td>TINYINT</td><td>残量（%・0〜100）</td></tr>
+    <tr><td>push_notified_at</td><td>DATETIME</td><td>最終プッシュ通知送信日時</td></tr>
+  </table>
+  <p class="note">BIダッシュボード（スタンダード以上）で店舗が管理。user_idが紐づいている場合、会員のマイページに残量・期限が表示される。期限前のプッシュ通知も可能。</p>
 <h3>チェックイン・フレンド関連 <span class="badge new">v0.2追加</span></h3>
   <table>
     <tr><th>テーブル</th><th>主なカラム</th><th>説明</th></tr>
