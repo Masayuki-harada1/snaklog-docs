@@ -42,7 +42,12 @@ tr:hover td{background:#faf8f3;}
 .plan-free{background:#e8f5e9;color:#2e7d32;}
 .indent{padding-left:20px;color:#888;}
 footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
-</style>
+
+  .tree-section{margin-bottom:1.5rem;}
+  .tree-head{background:var(--dark);padding:0.75rem 1.25rem;display:flex;align-items:center;gap:10px;border-radius:10px 10px 0 0;}
+  .tree-head h2{color:var(--gold);font-size:0.95rem;font-weight:700;}
+  .tree-desc{color:#888;font-size:0.78rem;margin-left:auto;}
+  .tree-wrap{background:white;border:1px solid #e0d9cc;border-top:none;border-radius:0 0 10px 10px;padding:1rem;overflow-x:auto;}</style>
 </head>
 <body>
 <header>
@@ -51,6 +56,7 @@ footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
   <span style="color:#666;font-size:0.78rem;margin-left:auto;">サイトマップ / ディレクトリマップ v0.2</span>
 </header>
 <nav>
+  <a href="#tree">ツリー図</a>
   <a href="#user">来店ユーザー向け</a>
   <a href="#member">会員機能</a>
   <a href="#store">店舗オーナー向け</a>
@@ -71,6 +77,161 @@ footer{text-align:center;padding:1.5rem;color:#aaa;font-size:0.75rem;}
 </div>
 
 <!-- 来店ユーザー向け -->
+
+<div class="tree-section" id="tree">
+  <div class="tree-head"><h2>ページ構成ツリー図</h2><div class="tree-desc">全ページの階層構造を視覚的に表示</div></div>
+  <div class="tree-wrap">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" style="width:100%;min-width:900px;height:auto;display:block;">
+    <rect x="20" y="12" width="12" height="12" rx="2" fill="#1a1730"/>
+    <text x="36" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">来店ユーザー向け（MVP）</text>
+    <rect x="185" y="12" width="12" height="12" rx="2" fill="#2d7a3a"/>
+    <text x="201" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">会員機能</text>
+    <rect x="265" y="12" width="12" height="12" rx="2" fill="#185fa5"/>
+    <text x="281" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">店舗オーナー向け</text>
+    <rect x="390" y="12" width="12" height="12" rx="2" fill="#7a5508"/>
+    <text x="406" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">Phase2</text>
+    <rect x="455" y="12" width="12" height="12" rx="2" fill="#1565c0"/>
+    <text x="471" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">将来実装</text>
+    <rect x="535" y="12" width="12" height="12" rx="2" fill="#555"/>
+    <text x="551" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">認証・共通</text>
+    <line x1="620" y1="18" x2="645" y2="18" stroke="#c9aa6e" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="650" y="23" font-size="10" fill="#555" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">= Phase2以降の接続</text>
+
+    <!-- TOP -->
+    <rect x="536" y="40" width="108" height="44" rx="6" fill="#1a1730"/>
+    <text x="590" y="58" text-anchor="middle" font-size="12" font-weight="bold" fill="#c9aa6e" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">トップページ</text>
+    <text x="590" y="74" text-anchor="middle" font-size="10" fill="#888" font-family="monospace">/</text>
+
+    <!-- TOP→L2縦線 -->
+    <line x1="590" y1="84" x2="590" y2="110" stroke="#c9aa6e" stroke-width="1.5"/>
+    <!-- L2横線 -->
+    <line x1="60" y1="110" x2="1140" y2="110" stroke="#c9aa6e" stroke-width="1.5"/>
+    <!-- L2縦線 -->
+    <line x1="60"   y1="110" x2="60"   y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="200"  y1="110" x2="200"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="340"  y1="110" x2="340"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="480"  y1="110" x2="480"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="590"  y1="110" x2="590"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="700"  y1="110" x2="700"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="820"  y1="110" x2="820"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="950"  y1="110" x2="950"  y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+    <line x1="1080" y1="110" x2="1080" y2="128" stroke="#c9aa6e" stroke-width="1.5"/>
+
+    <!-- L2ノード -->
+    <rect x="14"   y="128" width="92" height="42" rx="5" fill="#1a1730"/>
+    <text x="60"   y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#c9aa6e" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">店舗検索</text>
+    <text x="60"   y="160" text-anchor="middle" font-size="9" fill="#888" font-family="monospace">/search</text>
+    <rect x="154"  y="128" width="92" height="42" rx="5" fill="#1a1730"/>
+    <text x="200"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#c9aa6e" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">店舗詳細</text>
+    <text x="200"  y="160" text-anchor="middle" font-size="9" fill="#888" font-family="monospace">/shops/:id</text>
+    <rect x="294"  y="128" width="92" height="42" rx="5" fill="#2d7a3a"/>
+    <text x="340"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">マイページ</text>
+    <text x="340"  y="160" text-anchor="middle" font-size="9" fill="#c8e6c9" font-family="monospace">/mypage</text>
+    <rect x="434"  y="128" width="92" height="42" rx="5" fill="#555"/>
+    <text x="480"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">会員登録</text>
+    <text x="480"  y="160" text-anchor="middle" font-size="9" fill="#ddd" font-family="monospace">/register</text>
+    <rect x="544"  y="128" width="92" height="42" rx="5" fill="#555"/>
+    <text x="590"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">ログイン</text>
+    <text x="590"  y="160" text-anchor="middle" font-size="9" fill="#ddd" font-family="monospace">/login</text>
+    <rect x="654"  y="128" width="92" height="42" rx="5" fill="#185fa5"/>
+    <text x="700"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">掲載申請</text>
+    <text x="700"  y="160" text-anchor="middle" font-size="9" fill="#bbdefb" font-family="monospace">/apply</text>
+    <rect x="774"  y="128" width="92" height="42" rx="5" fill="#185fa5"/>
+    <text x="820"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">店舗管理</text>
+    <text x="820"  y="160" text-anchor="middle" font-size="9" fill="#bbdefb" font-family="monospace">/manage</text>
+    <rect x="904"  y="128" width="92" height="42" rx="5" fill="#7a5508"/>
+    <text x="950"  y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">求人一覧</text>
+    <text x="950"  y="160" text-anchor="middle" font-size="9" fill="#ffe0b2" font-family="monospace">/jobs</text>
+    <rect x="1034" y="128" width="92" height="42" rx="5" fill="#7a5508"/>
+    <text x="1080" y="144" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">プラン比較</text>
+    <text x="1080" y="160" text-anchor="middle" font-size="9" fill="#ffe0b2" font-family="monospace">/pricing</text>
+
+    <!-- L3: 店舗詳細→口コミ -->
+    <line x1="200" y1="170" x2="200" y2="200" stroke="#c9aa6e" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <rect x="152" y="200" width="96" height="40" rx="5" fill="#7a5508"/>
+    <text x="200" y="215" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">口コミ投稿</text>
+    <text x="200" y="229" text-anchor="middle" font-size="8.5" fill="#ffe0b2" font-family="monospace">/shops/:id/review</text>
+
+    <!-- L3: マイページ→フレンド管理・アカウント設定 -->
+    <line x1="340" y1="170" x2="340" y2="196" stroke="#c9aa6e" stroke-width="1.2"/>
+    <line x1="265" y1="196" x2="415" y2="196" stroke="#c9aa6e" stroke-width="1.2"/>
+    <line x1="265" y1="196" x2="265" y2="206" stroke="#c9aa6e" stroke-width="1.2"/>
+    <line x1="415" y1="196" x2="415" y2="206" stroke="#c9aa6e" stroke-width="1.2"/>
+    <rect x="218" y="206" width="94" height="40" rx="5" fill="#2d7a3a"/>
+    <text x="265" y="221" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">フレンド管理</text>
+    <text x="265" y="235" text-anchor="middle" font-size="8.5" fill="#c8e6c9" font-family="monospace">/mypage/friends</text>
+    <rect x="368" y="206" width="94" height="40" rx="5" fill="#555"/>
+    <text x="415" y="221" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">アカウント設定</text>
+    <text x="415" y="235" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/mypage/settings</text>
+
+    <!-- L3: 店舗管理→BIダッシュ・ボトルキープ -->
+    <line x1="820" y1="170" x2="820" y2="196" stroke="#c9aa6e" stroke-width="1.2"/>
+    <line x1="740" y1="196" x2="900" y2="196" stroke="#c9aa6e" stroke-width="1.2"/>
+    <line x1="740" y1="196" x2="740" y2="206" stroke="#c9aa6e" stroke-width="1.2"/>
+    <line x1="900" y1="196" x2="900" y2="206" stroke="#c9aa6e" stroke-width="1.2"/>
+    <rect x="690" y="206" width="100" height="40" rx="5" fill="#185fa5"/>
+    <text x="740" y="221" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">BIダッシュボード</text>
+    <text x="740" y="235" text-anchor="middle" font-size="8.5" fill="#bbdefb" font-family="monospace">/manage#bi</text>
+    <rect x="850" y="206" width="100" height="40" rx="5" fill="#185fa5"/>
+    <text x="900" y="221" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">ボトルキープ管理</text>
+    <text x="900" y="235" text-anchor="middle" font-size="8.5" fill="#bbdefb" font-family="monospace">/manage#bottle</text>
+
+    <!-- L3: 求人→求人詳細 -->
+    <line x1="950" y1="170" x2="950" y2="200" stroke="#c9aa6e" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <rect x="902" y="200" width="96" height="40" rx="5" fill="#7a5508"/>
+    <text x="950" y="215" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">求人詳細・応募</text>
+    <text x="950" y="229" text-anchor="middle" font-size="8.5" fill="#ffe0b2" font-family="monospace">/jobs/:id</text>
+
+    <!-- 将来実装仕切り -->
+    <line x1="30" y1="300" x2="1170" y2="300" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="6,4"/>
+    <text x="590" y="317" text-anchor="middle" font-size="10" fill="#1565c0" font-weight="bold" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">--- 将来実装予定（後続ローンチ）---</text>
+
+    <!-- 将来接続線 -->
+    <line x1="340" y1="246" x2="340" y2="334" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="590" y1="170" x2="590" y2="334" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="820" y1="246" x2="820" y2="334" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="340" y1="334" x2="820" y2="334" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="450" y1="334" x2="450" y2="344" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="590" y1="334" x2="590" y2="344" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+    <line x1="730" y1="334" x2="730" y2="344" stroke="#1565c0" stroke-width="1" stroke-dasharray="5,4"/>
+
+    <!-- 将来ノード -->
+    <rect x="404" y="344" width="92" height="40" rx="5" fill="#1565c0"/>
+    <text x="450" y="359" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">スナログポイント</text>
+    <text x="450" y="373" text-anchor="middle" font-size="8.5" fill="#bbdefb" font-family="monospace">/point</text>
+    <rect x="544" y="344" width="92" height="40" rx="5" fill="#1565c0"/>
+    <text x="590" y="359" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">スマート会計</text>
+    <text x="590" y="373" text-anchor="middle" font-size="8.5" fill="#bbdefb" font-family="monospace">/checkout</text>
+    <rect x="684" y="344" width="92" height="40" rx="5" fill="#1565c0"/>
+    <text x="730" y="359" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">M&amp;A相談</text>
+    <text x="730" y="373" text-anchor="middle" font-size="8.5" fill="#bbdefb" font-family="monospace">/ma</text>
+
+    <!-- 共通ページ仕切り -->
+    <line x1="30" y1="430" x2="1170" y2="430" stroke="#888" stroke-width="0.8" stroke-dasharray="4,4"/>
+    <text x="590" y="447" text-anchor="middle" font-size="10" fill="#888" font-weight="bold" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">--- 認証・共通ページ（全ユーザー共通）---</text>
+
+    <!-- 共通ノード -->
+    <rect x="60"  y="458" width="100" height="40" rx="5" fill="#555"/>
+    <text x="110" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">利用規約</text>
+    <text x="110" y="487" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/terms</text>
+    <rect x="190" y="458" width="100" height="40" rx="5" fill="#555"/>
+    <text x="240" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">プライバシー</text>
+    <text x="240" y="487" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/privacy</text>
+    <rect x="320" y="458" width="100" height="40" rx="5" fill="#555"/>
+    <text x="370" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">お問い合わせ</text>
+    <text x="370" y="487" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/contact</text>
+    <rect x="450" y="458" width="100" height="40" rx="5" fill="#555"/>
+    <text x="500" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">404 / エラー</text>
+    <text x="500" y="487" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/404</text>
+    <rect x="580" y="458" width="100" height="40" rx="5" fill="#555"/>
+    <text x="630" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">sitemap.xml</text>
+    <text x="630" y="487" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/sitemap.xml</text>
+    <rect x="710" y="458" width="100" height="40" rx="5" fill="#555"/>
+    <text x="760" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="Hiragino Kaku Gothic ProN,Meiryo,sans-serif">robots.txt</text>
+    <text x="760" y="487" text-anchor="middle" font-size="8.5" fill="#ddd" font-family="monospace">/robots.txt</text>
+  </svg>
+  </div>
+</div>
 <div class="sec" id="user">
   <div class="sec-head"><h2>来店ユーザー向けページ</h2><div class="sec-desc">スナックを探す人が使うページ群</div></div>
   <table>
